@@ -1,5 +1,6 @@
 package aero.mahan.utility;
 
+import aero.mahan.controller.AdminMainFrame;
 import aero.mahan.view.forms.LoginForm;
 
 import javax.swing.*;
@@ -12,8 +13,9 @@ public class AppStart {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LoginForm();
+                new AdminMainFrame();
             }
         });
+
     }
 }

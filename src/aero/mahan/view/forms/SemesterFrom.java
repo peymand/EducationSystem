@@ -12,8 +12,13 @@ import javax.swing.*;
 public class SemesterFrom extends JPanel{
 
     SemesterPanel semesterPanel;
-    SemesterTable semesterTablePanel;
+    SemesterTable semesterTable;
     IsemesterNotifier isemesterNotifier;
 
-
+public SemesterFrom(){
+    semesterPanel = new SemesterPanel();
+    semesterTable = new SemesterTable();
+    add(semesterPanel);
+    add(semesterTable);
+}
 }
