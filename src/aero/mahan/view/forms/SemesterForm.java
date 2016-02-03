@@ -9,7 +9,7 @@ import javax.swing.*;
 /**
  * Created by 92474747 on 1/26/2016.
  */
-public class SemesterFrom extends JPanel{
+public class SemesterForm extends JPanel{
 
     SemesterPanel semesterPanel;
     SemesterTable semesterTable;
