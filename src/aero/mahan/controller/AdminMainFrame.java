@@ -17,8 +17,8 @@ public class AdminMainFrame extends JFrame {
 
     SemesterFrom semesterFrom;
     SemesterBLO semesterBLO;
-    SemesterPanel semesterPanel;
     SemesterTable semesterTable;
+    SemesterPanel semesterPanel;
 
 
     public AdminMainFrame() {
@@ -30,9 +30,11 @@ public class AdminMainFrame extends JFrame {
 
         adminTabs = new JTabbedPane();
         semesterFrom = new SemesterFrom();
+        semesterTable = new SemesterTable();
 
         add(adminTabs);
         add(semesterFrom);
+        add(semesterTable);
 
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, semesterPanel, semesterTable);
         splitPane.setOneTouchExpandable(true);
