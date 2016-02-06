@@ -37,7 +37,7 @@ public class LoginMainFrame extends JFrame {
                 try {
                     loginBLO.checkUser(username, password);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "DB is not ready");
                 }
             }
         });
