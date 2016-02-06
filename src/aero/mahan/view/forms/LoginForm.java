@@ -15,7 +15,7 @@ public class LoginForm extends JPanel {
     IloginNotifier iloginNotifier;
 
     JLabel usernameLbl;
-    JTextField username;
+    JTextField usernameTxt;
 
     public void setIloginformNotifier(IloginNotifier loginNotifier) {
         this.iloginNotifier = loginNotifier;
