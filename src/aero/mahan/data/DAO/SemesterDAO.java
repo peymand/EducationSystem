@@ -3,10 +3,7 @@ package aero.mahan.data.DAO;
 import aero.mahan.data.DbUtil;
 import aero.mahan.model.Semester;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 
@@ -21,10 +18,21 @@ public class SemesterDAO {
         dbUtil= new DbUtil();
     }
 
-    public void add(ArrayList<Semester> semesters) throws SQLException {
+    public void add(ArrayList<Semester> semestersArray) throws SQLException {
         dbUtil.connect();
+        String insertSemesterQuery = "insert into[JavaTraining].[dbo].[Edu_Core_Semester] (SemesterYear,SemesterNumber) VALUES (?,?)";
+        for (Semester semester : semestersArray) {
+            PreparedStatement insertSemesterStatement = dbUtil.con.prepareStatement(insertSemesterQuery);
+            insertSemesterStatement.setInt(1, semester.getSemesterYear());
+            insertSemesterStatement.setInt(2, semester.getTermNo());
 
-        dbUtil.disConnect();
+//            if (professorNumbers.contains(professor.getProfessorNo())) {
+//                continue;
+//            }
+            insertSemesterStatement.execute();
+            System.out.println("Semester added");
+            dbUtil.disConnect();
+        }
     }
 
     void delete(ArrayList<Semester> semesters){
