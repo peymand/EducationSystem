@@ -58,4 +58,5 @@ public class SemesterDAO {
         dbUtil.disConnect();
         return semesterList;
     }
+
 }
