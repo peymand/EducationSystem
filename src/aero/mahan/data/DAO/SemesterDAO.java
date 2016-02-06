@@ -15,18 +15,17 @@ import java.util.ArrayList;
  */
 public class SemesterDAO {
 
-    public Connection con;
     DbUtil dbUtil;
 
     public void SemesterDAO(){
-        dbUtil = new DbUtil();
+        dbUtil= new DbUtil();
     }
 
+    public void add(ArrayList<Semester> semesters) throws SQLException {
+        dbUtil.connect();
 
-    public void save(ArrayList<Semester> semesters) {
-
+        dbUtil.disConnect();
     }
-
 
     void delete(ArrayList<Semester> semesters){
 
@@ -37,25 +36,18 @@ public class SemesterDAO {
     }
 
     ArrayList<Semester> read() throws SQLException {
-
         dbUtil.connect();
         String semesterReadSQLCommand = "select * from [JavaTraining].[dbo].[Edu_Core_Semester]";
-        Statement semesterListStatement = con.createStatement();
+        Statement semesterListStatement = dbUtil.con.createStatement();
         ResultSet semesterResultSet = semesterListStatement.executeQuery(semesterReadSQLCommand);
         ArrayList<Semester> semesterList = new ArrayList<>();
         while (semesterResultSet.next()) {
             Semester newSemester = new Semester();
             newSemester.setSemesterYear(semesterResultSet.getInt("SemesterYear"));
-            newSemester.setTermNo(semesterResultSet.getInt("TermNo"));
+            newSemester.setTermNo(semesterResultSet.getInt("SemesterNumber"));
             semesterList.add(newSemester);
         }
         dbUtil.disConnect();
         return semesterList;
-    }
-
-
-    public static void main(String[] args) throws SQLException {
-        SemesterDAO semesterDAO = new SemesterDAO();
-        semesterDAO.read();
     }
 }
