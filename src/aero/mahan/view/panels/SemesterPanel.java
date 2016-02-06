@@ -52,11 +52,9 @@ public class SemesterPanel extends JPanel {
         dim.width = 700;
         setPreferredSize(dim);
         setMinimumSize(dim);
-        TitledBorder professorTitledBorder = new TitledBorder(
-                "Academic Year");
+        TitledBorder professorTitledBorder = new TitledBorder("Academic Year");
         EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder,
-                innerBorder));
+        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder,innerBorder));
         setLayout(new GridBagLayout());
         designComponentLayout();
     }
@@ -101,6 +99,4 @@ public class SemesterPanel extends JPanel {
         c.gridy = 1;
         add(getSemesterNoText(), c);
     }
-
-
 }
