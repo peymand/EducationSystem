@@ -2,7 +2,6 @@ package aero.mahan.data.DAO;
 
 import aero.mahan.data.DbUtil;
 import aero.mahan.model.Semester;
-
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
  */
 public class SemesterDAO {
     DbUtil dbUtil;
-
     public void SemesterDAO(){
         dbUtil= new DbUtil();
     }
@@ -54,8 +52,46 @@ public class SemesterDAO {
         dbUtil.disConnect();
     }
 
-    void delete(ArrayList<Semester> semestersArray){
+    void delete(ArrayList<Semester> semestersArray) throws SQLException {
 
+        dbUtil.connect();
+        String semesterYearAndTermSQLQuery = "select SemesterYear,SemesterNumber from [JavaTraining].[dbo].[Edu_Core_Semester]";
+        Statement semesterYearAndTermStmt = dbUtil.con.createStatement();
+        ResultSet semesterYearAndTermResultSet = semesterYearAndTermStmt.executeQuery(semesterYearAndTermSQLQuery);
+
+        ArrayList<String> semesterYearAndTermDBArray = new ArrayList<>();
+        while (semesterYearAndTermResultSet.next()) {
+            int semesterYear = semesterYearAndTermResultSet.getInt("SemesterYear");
+            int semesterNumber = semesterYearAndTermResultSet.getInt("SemesterNumber");
+            semesterYearAndTermDBArray.add(concatenateDigits(semesterYear, semesterNumber));
+        }
+        ArrayList<String> concatenatedSemesterYearAndTermArray = new ArrayList<String>();
+        for (int i = 0; i <semestersArray.size() ; i++) {
+            concatenatedSemesterYearAndTermArray.add(i,concatenateDigits(semestersArray.get(i).getSemesterYear(),semestersArray.get(i).getTermNo()));
+        }
+
+        String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester] where SemesterYear = ? and semesternumber = ?";
+        boolean contains;
+        String[] semesterYearAndTermExtracted = new String[2];
+        for (int i = 0; i < semesterYearAndTermDBArray.size(); i++) {
+            contains = false;
+            for (int j = 0; j < concatenatedSemesterYearAndTermArray.size(); j++) {
+                if (concatenatedSemesterYearAndTermArray.get(j).equals(semesterYearAndTermDBArray.get(i))) {
+                    contains = true;
+                    break;
+                }
+            }
+            if (!contains) {
+                PreparedStatement deleteSemesterStatement = dbUtil.con.prepareStatement(deleteSemesterQuery);
+                semesterYearAndTermExtracted[0] = semesterYearAndTermDBArray.get(i).substring(0,4);
+                semesterYearAndTermExtracted[1] = semesterYearAndTermDBArray.get(i).substring(4);
+                deleteSemesterStatement.setString(1, semesterYearAndTermExtracted[0]);
+                deleteSemesterStatement.setString(2, semesterYearAndTermExtracted[1]);
+                deleteSemesterStatement.executeUpdate();
+                System.out.println("Semester deleted");
+            }
+        }
+        dbUtil.disConnect();
     }
 
     void update(ArrayList<Semester> semestersArray){
@@ -85,4 +121,18 @@ public class SemesterDAO {
         }
         return sb.toString();
     }
+
+//    public static void main(String[] args) throws SQLException {
+//        ArrayList<Semester> semesterArrayList = new ArrayList<Semester>();
+//        Semester semester = new Semester();
+//        Semester semester1 = new Semester();
+//        semester.setSemesterYear(2000);
+//        semester.setTermNo(5);
+//        semester1.setSemesterYear(1000);
+//        semester1.setTermNo(8);
+//        semesterArrayList.add(0,semester);
+//        semesterArrayList.add(1,semester1);
+//        SemesterDAO semesterDAO = new SemesterDAO();
+//        semesterDAO.delete(semesterArrayList);
+//    }
 }
