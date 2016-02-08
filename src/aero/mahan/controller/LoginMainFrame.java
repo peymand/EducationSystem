@@ -1,5 +1,6 @@
 package aero.mahan.controller;
 
+//import aero.mahan.biz.BLO.LoginBLO;
 import aero.mahan.biz.BLO.LoginBLO;
 import aero.mahan.view.forms.LoginForm;
 import aero.mahan.view.interfaces.IloginNotifier;
@@ -52,8 +53,9 @@ public class LoginMainFrame extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
 
             LoginMainFrame loginMainFrame;
+
             public void run() {
-                loginMainFrame= new LoginMainFrame();
+                loginMainFrame = new LoginMainFrame();
             }
         });
 
