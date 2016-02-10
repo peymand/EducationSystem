@@ -25,16 +25,18 @@ public class SemesterDAO {
 
         ArrayList<String> semesterYearAndTermArray = new ArrayList<>();
         while (semesterYearAndTermResultSet.next()) {
+            int semesterId = semesterYearAndTermResultSet.getInt("Id");
             int semesterYear = semesterYearAndTermResultSet.getInt("SemesterYear");
             int semesterNumber = semesterYearAndTermResultSet.getInt("SemesterNumber");
             semesterYearAndTermArray.add(concatenateDigits(semesterYear,semesterNumber));
         }
-        String insertSemesterQuery = "insert into[JavaTraining].[dbo].[Edu_Core_Semester] (SemesterYear,SemesterNumber) VALUES (?,?)";
+        String insertSemesterQuery = "insert into[JavaTraining].[dbo].[Edu_Core_Semester] (SemesterYear,SemesterNumber) VALUES (?,?,?)";
         int duplicateCounter=0;
         for (Semester semester : semestersArray) {
             PreparedStatement insertSemesterStatement = dbUtil.con.prepareStatement(insertSemesterQuery);
-            insertSemesterStatement.setInt(1, semester.getSemesterYear());
-            insertSemesterStatement.setInt(2, semester.getTermNo());
+            insertSemesterStatement.setInt(1, semester.getSemesterId());
+            insertSemesterStatement.setInt(2, semester.getSemesterYear());
+            insertSemesterStatement.setInt(3, semester.getTermNo());
 
             String concatenatedSemesterYearAndTerm = concatenateDigits(semester.getSemesterYear(),semester.getTermNo());
             if (semesterYearAndTermArray.contains(concatenatedSemesterYearAndTerm)) {
@@ -61,6 +63,7 @@ public class SemesterDAO {
 
         ArrayList<String> semesterYearAndTermDBArray = new ArrayList<>();
         while (semesterYearAndTermResultSet.next()) {
+            int semesterId = semesterYearAndTermResultSet.getInt("Id");
             int semesterYear = semesterYearAndTermResultSet.getInt("SemesterYear");
             int semesterNumber = semesterYearAndTermResultSet.getInt("SemesterNumber");
             semesterYearAndTermDBArray.add(concatenateDigits(semesterYear, semesterNumber));
@@ -102,13 +105,18 @@ public class SemesterDAO {
 
         ArrayList<String> semesterYearAndTermDBArray = new ArrayList<>();
         while (semesterYearAndTermResultSet.next()) {
+            int semesterId = semesterYearAndTermResultSet.getInt("Id");
             int semesterYear = semesterYearAndTermResultSet.getInt("SemesterYear");
             int semesterNumber = semesterYearAndTermResultSet.getInt("SemesterNumber");
             semesterYearAndTermDBArray.add(concatenateDigits(semesterYear,semesterNumber));
         }
 
-        for (Semester semester : semestersArray){
+        for (int i = 0; i <semestersArray.size() ; i++) {
+            for (int j = 0; j <semesterYearAndTermDBArray.size() ; j++) {
+                if (semestersArray.get(i).getSemesterId()!=semesterYearAndTermDBArray.get(j).){
 
+                }
+            }
         }
         dbUtil.disConnect();
     }
@@ -121,6 +129,7 @@ public class SemesterDAO {
         ArrayList<Semester> semesterList = new ArrayList<>();
         while (semesterResultSet.next()) {
             Semester newSemester = new Semester();
+            newSemester.setSemesterId(semesterResultSet.getInt("Id"));
             newSemester.setSemesterYear(semesterResultSet.getInt("SemesterYear"));
             newSemester.setTermNo(semesterResultSet.getInt("SemesterNumber"));
             semesterList.add(newSemester);
