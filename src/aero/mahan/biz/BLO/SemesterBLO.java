@@ -16,7 +16,7 @@ public class SemesterBLO {
 
     public void save(ArrayList<Semester> semesters) throws SQLException {
 
-//        semesterDAO.save(semesters);
+        semesterDAO.save(semesters);
     }
 
 
