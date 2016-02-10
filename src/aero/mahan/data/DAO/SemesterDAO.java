@@ -16,7 +16,7 @@ public class SemesterDAO {
         dbUtil= new DbUtil();
     }
 
-    public void add(ArrayList<Semester> semestersArray) throws SQLException {
+    public void save(ArrayList<Semester> semestersArray) throws SQLException {
 
         dbUtil.connect();
         String semesterYearAndTermSQLQuery = "select SemesterYear,SemesterNumber from [JavaTraining].[dbo].[Edu_Core_Semester]";
@@ -52,7 +52,7 @@ public class SemesterDAO {
         dbUtil.disConnect();
     }
 
-    void delete(ArrayList<Semester> semestersArray) throws SQLException {
+    public void delete(ArrayList<Semester> semestersArray) throws SQLException {
 
         dbUtil.connect();
         String semesterYearAndTermSQLQuery = "select SemesterYear,SemesterNumber from [JavaTraining].[dbo].[Edu_Core_Semester]";
@@ -94,11 +94,26 @@ public class SemesterDAO {
         dbUtil.disConnect();
     }
 
-    void update(ArrayList<Semester> semestersArray){
+    public void update(ArrayList<Semester> semestersArray) throws SQLException {
+        dbUtil.connect();
+        String semesterYearAndTermSQLQuery = "select SemesterYear,SemesterNumber from [JavaTraining].[dbo].[Edu_Core_Semester]";
+        Statement semesterYearAndTermStmt = dbUtil.con.createStatement();
+        ResultSet semesterYearAndTermResultSet = semesterYearAndTermStmt.executeQuery(semesterYearAndTermSQLQuery);
 
+        ArrayList<String> semesterYearAndTermDBArray = new ArrayList<>();
+        while (semesterYearAndTermResultSet.next()) {
+            int semesterYear = semesterYearAndTermResultSet.getInt("SemesterYear");
+            int semesterNumber = semesterYearAndTermResultSet.getInt("SemesterNumber");
+            semesterYearAndTermDBArray.add(concatenateDigits(semesterYear,semesterNumber));
+        }
+
+        for (Semester semester : semestersArray){
+
+        }
+        dbUtil.disConnect();
     }
 
-    ArrayList<Semester> read() throws SQLException {
+    public ArrayList<Semester> read() throws SQLException {
         dbUtil.connect();
         String semesterReadSQLCommand = "select * from [JavaTraining].[dbo].[Edu_Core_Semester]";
         Statement semesterListStatement = dbUtil.con.createStatement();
