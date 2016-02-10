@@ -5,6 +5,8 @@ import aero.mahan.view.tables.models.SemesterTableModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -27,12 +29,17 @@ public class SemesterTable extends JPanel {
 
     }
 
-    void Refresh() {
+    public void Refresh() {
         semesterTableModel.fireTableDataChanged();
     }
 
-    void SetAndRefresh(ArrayList<Semester> semester) {
-        semesterTableModel.setSemesterArrayList(semester);
+    public void addAndRefresh(Semester semester) {
+
+        semesterTableModel.addSemesterArrayList(semester);
+        Refresh();
+    }
+    public void deleteAndRefresh(Semester semester){
+        semesterTableModel.deleteSemesterArryList(semester);
         Refresh();
     }
 

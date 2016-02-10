@@ -28,14 +28,14 @@ public class AdminMainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-
-
         semesterTab = new JTabbedPane();
         this.add(semesterTab, BorderLayout.CENTER);
 
         semesterPanel = new SemesterPanel(JSplitPane.VERTICAL_SPLIT);
         semesterTab.insertTab("Semester", null, semesterPanel, null, 0);
         semesterTab.setTabPlacement(JTabbedPane.TOP);
+
+
 
     }
 

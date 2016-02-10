@@ -1,13 +1,14 @@
 package aero.mahan.view.forms;
 
-import aero.mahan.view.interfaces.IsemesterNotifier;
-import aero.mahan.view.panels.SemesterPanel;
-import aero.mahan.view.tables.SemesterTable;
+import aero.mahan.model.Semester;
+import aero.mahan.view.interfaces.ISemesterNotifier;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by 92474747 on 1/26/2016.
@@ -16,7 +17,20 @@ public class SemesterForm extends JPanel {
 
     private JLabel academicYear, semesterNo;
     private JTextField academicYearText, semesterNoText;
-    private JButton addbtn,savebtn,deletebtn,editbtn;
+    private JButton addBtn, saveBtn, deleteBtn, editBtn;
+    private ISemesterNotifier isemesterNotifier;
+
+    public String getAcademicYearText() {
+        return academicYearText.getText();
+    }
+
+    public String getSemesterNoText() {
+        return semesterNoText.getText();
+    }
+
+    public void setISemesterNotifier(ISemesterNotifier x) {
+        this.isemesterNotifier = x;
+    }
 
     public SemesterForm() {
         Dimension dim = new Dimension();
@@ -28,6 +42,47 @@ public class SemesterForm extends JPanel {
         EtchedBorder innerBorder = new EtchedBorder(2);
         setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
+        academicYear = new JLabel("Academic Year:");
+        semesterNo = new JLabel("semesterNo:");
+
+        academicYearText = new JTextField(10);
+        semesterNoText = new JTextField(10);
+
+        addBtn = new JButton("Add");
+        saveBtn = new JButton("Save");
+        deleteBtn = new JButton("Delete");
+        editBtn = new JButton("Edit");
+        addBtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent event) {
+
+                Semester s = new Semester();
+                s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+                s.setTermNo(Integer.parseInt(getSemesterNoText()));
+                isemesterNotifier.addEventOccurred(s);
+            }
+
+        });
+
+        editBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        saveBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        deleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         designComponentLayout();
 
     }
@@ -40,16 +95,6 @@ public class SemesterForm extends JPanel {
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
 
-        academicYear = new JLabel("Academic Year:");
-        semesterNo = new JLabel("semesterNo:");
-
-        academicYearText = new JTextField(10);
-        semesterNoText = new JTextField(10);
-
-        addbtn = new JButton("Add");
-        savebtn=new JButton("Save");
-        deletebtn = new JButton("Delete");
-        editbtn = new JButton("Edit");
 
         c.weighty = 0.05;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -73,19 +118,19 @@ public class SemesterForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 3;
-        add(addbtn,c);
+        add(addBtn, c);
 
-        c.gridx=1;
+        c.gridx = 1;
         c.gridy = 3;
-        add(savebtn,c);
+        add(saveBtn, c);
 
         c.gridx = 2;
         c.gridy = 3;
-        add(deletebtn,c);
+        add(deleteBtn, c);
 
         c.gridx = 3;
         c.gridy = 3;
-        add(editbtn,c);
+        add(editBtn, c);
 
         return c;
     }

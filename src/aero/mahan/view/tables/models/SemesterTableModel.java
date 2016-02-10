@@ -20,12 +20,14 @@ public class SemesterTableModel extends AbstractTableModel {
 
     private SemesterDAO db;
 
-    public void setSemesterArrayList(ArrayList<Semester> semesterList) {
-        this.semesterArrayList = semesterList;
+    public void addSemesterArrayList(Semester semester) {
+        semesterArrayList.add(semester);
+    }
+    public void deleteSemesterArryList(Semester semester) {
+        semesterArrayList.remove(semester);
     }
 
     public SemesterTableModel() throws SQLException {
-      //  semesterArrayList = new ArrayList<Semester>();
         db = new SemesterDAO();
         semesterArrayList = db.read();
 
