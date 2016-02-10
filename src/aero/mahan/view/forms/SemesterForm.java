@@ -14,41 +14,10 @@ import java.awt.*;
  */
 public class SemesterForm extends JPanel {
 
-    private JLabel academicYear;
-    private JLabel semesterNo;
-    private JTextField academicYearText;
-    private JTextField semesterNoText;
-    public JLabel getAcademicYear() {
-        return academicYear;
-    }
+    private JLabel academicYear, semesterNo;
+    private JTextField academicYearText, semesterNoText;
+    private JButton addbtn,savebtn,deletebtn,editbtn;
 
-    public void setAcademicYear(JLabel academicYear) {
-        this.academicYear = academicYear;
-    }
-
-    public JLabel getSemesterNo() {
-        return semesterNo;
-    }
-
-    public void setSemesterNo(JLabel semesterNo) {
-        this.semesterNo = semesterNo;
-    }
-
-    public JTextField getAcademicYearText() {
-        return academicYearText;
-    }
-
-    public void setAcademicYearText(JTextField academicYearText) {
-        this.academicYearText = academicYearText;
-    }
-
-    public JTextField getSemesterNoText() {
-        return semesterNoText;
-    }
-
-    public void setSemesterNoText(JTextField semesterNoText) {
-        this.semesterNoText = semesterNoText;
-    }
     public SemesterForm() {
         Dimension dim = new Dimension();
         dim.height = 200;
@@ -57,50 +26,68 @@ public class SemesterForm extends JPanel {
         setMinimumSize(dim);
         TitledBorder professorTitledBorder = new TitledBorder("Academic Year");
         EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder,innerBorder));
+        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
         designComponentLayout();
 
     }
+
     private void designComponentLayout() {
         GridBagConstraints c = putAcademicYearOnForm();
-        putSemesterNoOnForm(c);
+
     }
 
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
-        setAcademicYear(new JLabel("Academic Year"));
-        c.ipadx = 3;
+
+        academicYear = new JLabel("Academic Year:");
+        semesterNo = new JLabel("semesterNo:");
+
+        academicYearText = new JTextField(10);
+        semesterNoText = new JTextField(10);
+
+        addbtn = new JButton("Add");
+        savebtn=new JButton("Save");
+        deletebtn = new JButton("Delete");
+        editbtn = new JButton("Edit");
+
         c.weighty = 0.05;
-        c.weightx = 1;
-        c.anchor = GridBagConstraints.WEST;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.fill = GridBagConstraints.HORIZONTAL;
+
         c.gridx = 0;
         c.gridy = 0;
-        add(getAcademicYear(), c);
+        add(academicYear, c);
 
-        setSemesterNoText(new JTextField(10));
-        c.anchor = GridBagConstraints.WEST;
-        c.gridx = 1;
-        c.gridy = 1;
-        add(getSemesterNoText(), c);
-        return c;
-    }
-
-    public void putSemesterNoOnForm(GridBagConstraints c) {
-        setSemesterNo(new JLabel("Semester Number"));
-        c.weighty = 0.05;
-        c.anchor = GridBagConstraints.WEST;
-        c.fill = GridBagConstraints.NONE;
         c.gridx = 0;
         c.gridy = 1;
-        add(getSemesterNo(), c);
+        add(semesterNo, c);
 
-        setSemesterNoText(new JTextField(10));
-        c.anchor = GridBagConstraints.WEST;
+        c.gridx = 1;
+        c.gridy = 0;
+        add(academicYearText, c);
+
         c.gridx = 1;
         c.gridy = 1;
-        add(getSemesterNoText(), c);
-    }
+        add(semesterNoText, c);
 
+        c.gridx = 0;
+        c.gridy = 3;
+        add(addbtn,c);
+
+        c.gridx=1;
+        c.gridy = 3;
+        add(savebtn,c);
+
+        c.gridx = 2;
+        c.gridy = 3;
+        add(deletebtn,c);
+
+        c.gridx = 3;
+        c.gridy = 3;
+        add(editbtn,c);
+
+        return c;
+    }
 
 }
