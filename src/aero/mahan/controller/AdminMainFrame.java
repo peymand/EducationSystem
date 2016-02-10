@@ -1,10 +1,7 @@
 package aero.mahan.controller;
 
 import aero.mahan.biz.BLO.SemesterBLO;
-import aero.mahan.view.forms.SemesterForm;
-import aero.mahan.view.forms.SemesterForm;
 import aero.mahan.view.panels.SemesterPanel;
-import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +11,9 @@ import java.awt.*;
  */
 public class AdminMainFrame extends JFrame {
 
-  //  JTabbedPane adminTabs;
-    SemesterForm semesterForm;
-//    SemesterBLO semesterBLO;
+    JTabbedPane semesterTab;
+    SemesterPanel semesterPanel;
+    SemesterBLO semesterBLO;
 
     public AdminMainFrame() {
         super("Administration Environment");
@@ -24,15 +21,15 @@ public class AdminMainFrame extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        semesterForm = new SemesterForm();
-  //      adminTabs = new JTabbedPane();
 
-  //      this.add(adminTabs, BorderLayout.CENTER);
-  //      adminTabs.add(semesterForm);
-   //     adminTabs.insertTab("Semester", null, semesterForm, null, 0);
-   //     adminTabs.setTabPlacement(JTabbedPane.LEFT);
+        semesterTab = new JTabbedPane();
+        this.add(semesterTab, BorderLayout.CENTER);
 
-this.add(semesterForm);
+        semesterPanel = new SemesterPanel(JSplitPane.VERTICAL_SPLIT);
+        semesterTab.insertTab("Semester", null, semesterPanel, null, 0);
+        semesterTab.setTabPlacement(JTabbedPane.TOP);
+
     }
+
 
 }
