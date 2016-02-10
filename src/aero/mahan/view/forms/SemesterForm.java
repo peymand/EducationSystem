@@ -1,7 +1,8 @@
 package aero.mahan.view.forms;
 
 import aero.mahan.model.Semester;
-import aero.mahan.view.interfaces.ISemesterNotifier;
+import aero.mahan.view.interfaces.IsemesterNotifier;
+import aero.mahan.view.interfaces.IsemesterNotifier;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -18,7 +19,7 @@ public class SemesterForm extends JPanel {
     private JLabel academicYear, semesterNo;
     private JTextField academicYearText, semesterNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
-    private ISemesterNotifier isemesterNotifier;
+    private IsemesterNotifier isemesterNotifier;
 
     public String getAcademicYearText() {
         return academicYearText.getText();
@@ -28,7 +29,7 @@ public class SemesterForm extends JPanel {
         return semesterNoText.getText();
     }
 
-    public void setISemesterNotifier(ISemesterNotifier x) {
+    public void setISemesterNotifier(IsemesterNotifier x) {
         this.isemesterNotifier = x;
     }
 

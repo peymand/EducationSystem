@@ -2,7 +2,7 @@ package aero.mahan.view.panels;
 
 import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
-import aero.mahan.view.interfaces.ISemesterNotifier;
+import aero.mahan.view.interfaces.IsemesterNotifier;
 import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
@@ -23,7 +23,7 @@ public class SemesterPanel extends JSplitPane {
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
-        semesterForm.setISemesterNotifier(new ISemesterNotifier() {
+        semesterForm.setISemesterNotifier(new IsemesterNotifier() {
             @Override
             public void saveEventOccurred(ArrayList<Semester> values) {
 
