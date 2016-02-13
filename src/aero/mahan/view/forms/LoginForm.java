@@ -7,13 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by 92474747 on 1/26/2016.
- */
-
-/*
-* @Author : Fatemeh Kashefi
-* */
 public class LoginForm extends JPanel {
 
     JLabel usernameLbl;

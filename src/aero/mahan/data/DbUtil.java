@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by 92474747 on 1/26/2016.
- */
+
 public class DbUtil {
 
     public Connection con;
