@@ -14,13 +14,13 @@ public class LoginMainFrame extends JFrame {
     LoginForm loginForm;
     LoginBLO loginBLO;
 
-    LoginMainFrame(){
+    public LoginMainFrame(){
 
         loginForm = new LoginForm();
         loginBLO = new LoginBLO();
 
         setTitle("Login Page");
-        setSize(500, 200);
+        setBounds(700, 500, 500, 200);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
@@ -36,22 +36,5 @@ public class LoginMainFrame extends JFrame {
                 }
             }
         });
-
-
-
-            }
-
-
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            LoginMainFrame loginMainFrame;
-            public void run() {
-                loginMainFrame= new LoginMainFrame();
-            }
-        });
-
     }
-    
 }

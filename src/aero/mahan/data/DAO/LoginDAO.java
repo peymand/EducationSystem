@@ -1,5 +1,7 @@
 package aero.mahan.data.DAO;
 
+import aero.mahan.controller.AdminMainFrame;
+import aero.mahan.controller.LoginMainFrame;
 import aero.mahan.data.DbUtil;
 import aero.mahan.model.Person;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -21,8 +23,7 @@ public class LoginDAO {
                 + userName + "'and Password='" + passWord + "'");
 
         if (res.next()) {
-
-            JOptionPane.showMessageDialog(null, "Login Successful");
+            new AdminMainFrame();
         } else {
             JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
         }
