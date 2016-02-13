@@ -12,8 +12,8 @@ import java.sql.SQLException;
  */
 public class SemesterTable extends JPanel {
     private SemesterTableModel semesterTableModel;
-    private JTable semestrTble;
-    private IDataLoader iDataLoader;
+    private JTable semestrTable;
+
 
     public SemesterTable() {
         try {
@@ -21,9 +21,9 @@ public class SemesterTable extends JPanel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        semestrTble = new JTable(getSemesterTableModel());
-        this.add(new JScrollPane(semestrTble), BorderLayout.CENTER);
-        semestrTble.setRowHeight(50);
+        semestrTable = new JTable(getSemesterTableModel());
+        this.add(new JScrollPane(semestrTable), BorderLayout.CENTER);
+        semestrTable.setRowHeight(50);
 
     }
 
@@ -39,10 +39,6 @@ public class SemesterTable extends JPanel {
     public void deleteAndRefresh(Semester semester){
         getSemesterTableModel().deleteSemesterArrayList(semester);
         Refresh();
-    }
-
-    public void setiDataLoader(IDataLoader iDataLoader) {
-        this.iDataLoader = iDataLoader;
     }
 
     public SemesterTableModel getSemesterTableModel() {
