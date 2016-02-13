@@ -24,15 +24,18 @@ public class SemesterPanel extends JSplitPane {
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
         semesterForm.setISemesterNotifier(new IsemesterNotifier() {
-            @Override
-            public void saveEventOccurred(ArrayList<Semester> values) {
-
-            }
 
             @Override
             public void addEventOccurred(Semester value) {
                 semesterTable.addAndRefresh(value);
             }
+
+            @Override
+            public void saveEventOccurred(ArrayList<Semester> values) {
+                values = semesterTable.getSemesterTableModel().getSemesterArrayList();
+
+            }
+
 
             @Override
             public void editEventOccurred(Semester value) {

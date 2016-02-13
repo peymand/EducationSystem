@@ -76,6 +76,7 @@ public class SemesterForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                isemesterNotifier.saveEventOccurred(null);
             }
         });
         deleteBtn.addActionListener(new ActionListener() {

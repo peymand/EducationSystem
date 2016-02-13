@@ -3,7 +3,6 @@ package aero.mahan.view.tables.models;
 import aero.mahan.data.DAO.SemesterDAO;
 import aero.mahan.model.Semester;
 
-import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,19 +20,18 @@ public class SemesterTableModel extends AbstractTableModel {
     private SemesterDAO db;
 
     public void addSemesterArrayList(Semester semester) {
-        semesterArrayList.add(semester);
+        getSemesterArrayList().add(semester);
     }
-    public void deleteSemesterArryList(Semester semester) {
-        semesterArrayList.remove(semester);
+    public void deleteSemesterArrayList(Semester semester) {
+        getSemesterArrayList().remove(semester);
     }
 
     public SemesterTableModel() throws SQLException {
         db = new SemesterDAO();
-        semesterArrayList = db.read();
+        setSemesterArrayList(db.read());
 
 
     }
-
 
     @Override
     public String getColumnName(int i) {
@@ -44,7 +42,7 @@ public class SemesterTableModel extends AbstractTableModel {
     @Override
     public int getRowCount() {
 
-        return semesterArrayList.size();
+        return getSemesterArrayList().size();
 
     }
 
@@ -57,9 +55,9 @@ public class SemesterTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
-        for (int i = 0; i < semesterArrayList.size(); i++) {
+        for (int i = 0; i < getSemesterArrayList().size(); i++) {
 
-            Semester s = semesterArrayList.get(row);
+            Semester s = getSemesterArrayList().get(row);
             switch (col) {
                 case 0:
                     return s.getSemesterYear();
@@ -80,10 +78,10 @@ public class SemesterTableModel extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object value, int row, int col) {
-        if (semesterArrayList == null) {
+        if (getSemesterArrayList() == null) {
             return;
         }
-        Semester s = (Semester) semesterArrayList.get(row);
+        Semester s = (Semester) getSemesterArrayList().get(row);
 
         switch (col) {
 
@@ -105,4 +103,11 @@ public class SemesterTableModel extends AbstractTableModel {
 
     }
 
+    public ArrayList<Semester> getSemesterArrayList() {
+        return semesterArrayList;
+    }
+
+    public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
+        this.semesterArrayList = semesterArrayList;
+    }
 }
