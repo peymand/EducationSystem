@@ -29,12 +29,11 @@ public class LoginMainFrame extends JFrame {
         loginForm.setiLoginNotifer(new IloginNotifier() {
             @Override
            public void loginEventOccurred(String username, String password) {
-//                try {
-//                if(loginBLO.checkUser(username, password))
-//
-//               } catch (SQLException e) {
-//                   JOptionPane.showMessageDialog(null, "DB is not ready");
-//                }
+                try {
+                    loginBLO.checkUser(username, password);
+               } catch (SQLException e) {
+                   JOptionPane.showMessageDialog(null, "DB is not ready");
+                }
             }
         });
 

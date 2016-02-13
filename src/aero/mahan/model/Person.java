@@ -19,4 +19,16 @@ public class Person {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getIdType() {
+        return idType;
+    }
 }
