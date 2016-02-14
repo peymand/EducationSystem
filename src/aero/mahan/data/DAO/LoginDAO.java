@@ -19,11 +19,15 @@ public class LoginDAO {
         dbUtil.connect();
         st = dbUtil.con.createStatement();
 
-        ResultSet res = st.executeQuery("SELECT [Username],[Password],[Id_Type] FROM [JavaTraining].[dbo].[Edu_Core_User]   where Username='"
-                + userName + "'and Password='" + passWord + "'");
+        ResultSet res = st.executeQuery("SELECT [Username],[Password],[Id_Type] FROM [JavaTraining].[dbo].[Edu_Core_User]   where Username='"+ userName + "'and Password='" + passWord + "'");
 
+//        Person person = new Person();
+//        person.setUsername(res.getString("Username"));
+//        person.setPassword(res.getString("Password"));
+//        person.setIdType(res.getInt("Id_Type"));
         if (res.next()) {
             new AdminMainFrame();
+
         } else {
             JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
         }
