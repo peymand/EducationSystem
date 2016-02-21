@@ -1,6 +1,5 @@
 package aero.mahan.controller;
 
-//import aero.mahan.biz.BLO.LoginBLO;
 import aero.mahan.biz.BLO.LoginBLO;
 import aero.mahan.view.forms.LoginForm;
 import aero.mahan.view.interfaces.IloginNotifier;
@@ -10,12 +9,12 @@ import java.awt.*;
 import java.sql.SQLException;
 
 public class LoginMainFrame extends JFrame {
-    
+
     LoginForm loginForm;
     LoginBLO loginBLO;
     AdminMainFrame adminMainFrame;
 
-    public LoginMainFrame(){
+    public LoginMainFrame() {
 
         loginForm = new LoginForm();
         loginBLO = new LoginBLO();
@@ -29,18 +28,16 @@ public class LoginMainFrame extends JFrame {
 
         loginForm.setiLoginNotifer(new IloginNotifier() {
             @Override
-           public void loginEventOccurred(String username, String password) {
+            public void loginEventOccurred(String username, String password) {
                 try {
-                    if ( loginBLO.checkUser(username, password)==1){
-                        adminMainFrame=new AdminMainFrame();
-                    }else
-                        JOptionPane.showMessageDialog(null,"Frame is not implemented");
+                    if (loginBLO.checkUser(username, password) == 1) {
+                        dispose();
+                        adminMainFrame = new AdminMainFrame();
 
-            //        loginBLO.checkUser(username, password);
-
-               } catch (SQLException e) {
-
-                   JOptionPane.showMessageDialog(null, e.getMessage());
+                    } else
+                        JOptionPane.showMessageDialog(null, "Frame is not implemented");
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
         });

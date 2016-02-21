@@ -1,19 +1,18 @@
 package aero.mahan.biz.BLO;
 
 import aero.mahan.data.DAO.LoginDAO;
-import aero.mahan.model.Person;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class LoginBLO {
     LoginDAO loginDAO;
-    public  LoginBLO(){
+
+    public LoginBLO() {
         loginDAO = new LoginDAO();
     }
 
-    public Integer checkUser(String username,String password) throws SQLException{
-        return loginDAO.checkUser(username,password);
+    public Integer checkUser(String username, String password) throws SQLException {
+        return loginDAO.checkUser(username, password);
     }
 
 }

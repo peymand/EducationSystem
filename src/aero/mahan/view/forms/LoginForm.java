@@ -17,8 +17,8 @@ public class LoginForm extends JPanel {
     private JButton loginBtn;
     IloginNotifier iloginNotifier;
 
-    public LoginForm(){
-        setSize(500,150);
+    public LoginForm() {
+        setSize(500, 150);
         setVisible(true);
         setLayout(new GridBagLayout());
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -57,7 +57,7 @@ public class LoginForm extends JPanel {
         layout.gridy = 1;
         add(passwordField, layout);
 
-        loginBtn= createLoginButton("Login" );
+        loginBtn = createLoginButton("Login");
         layout.gridx = 1;
         layout.gridy = 2;
         add(loginBtn, layout);
