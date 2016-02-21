@@ -2,7 +2,6 @@ package aero.mahan.view.forms;
 
 import aero.mahan.model.Semester;
 import aero.mahan.view.interfaces.IsemesterNotifier;
-import aero.mahan.view.interfaces.IsemesterNotifier;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -43,6 +42,7 @@ public class SemesterForm extends JPanel {
         EtchedBorder innerBorder = new EtchedBorder(2);
         setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
+
         academicYear = new JLabel("Academic Year:");
         semesterNo = new JLabel("semesterNo:");
 
@@ -53,6 +53,7 @@ public class SemesterForm extends JPanel {
         saveBtn = new JButton("Save");
         deleteBtn = new JButton("Delete");
         editBtn = new JButton("Edit");
+
         addBtn.addActionListener(new ActionListener() {
 
             @Override

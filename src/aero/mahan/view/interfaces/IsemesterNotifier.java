@@ -13,4 +13,5 @@ public interface IsemesterNotifier {
     void saveEventOccurred(ArrayList<Semester> values);
     void editEventOccurred(Semester value);
     void deleteEventOccurred(Semester value);
+
 }

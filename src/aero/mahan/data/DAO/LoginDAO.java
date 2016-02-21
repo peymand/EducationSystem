@@ -13,13 +13,12 @@ public class LoginDAO {
     DbUtil dbUtil;
     private Statement st;
 
-    public void
-    checkUser(String userName, String passWord) throws SQLException {
+    public void checkUser(String userName, String passWord) throws SQLException {
         dbUtil = new DbUtil();
         dbUtil.connect();
         st = dbUtil.con.createStatement();
 
-        ResultSet res = st.executeQuery("SELECT [Username],[Password],[Id_Type] FROM [JavaTraining].[dbo].[Edu_Core_User]   where Username='"+ userName + "'and Password='" + passWord + "'");
+        ResultSet res = st.executeQuery("SELECT [Username],[Password],[Id_Type] FROM [JavaTraining].[dbo].[Edu_Core_User]   where Username='" + userName + "'and Password='" + passWord + "'");
 
 //        Person person = new Person();
 //        person.setUsername(res.getString("Username"));
@@ -29,7 +28,8 @@ public class LoginDAO {
             new AdminMainFrame();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
+//            JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
+            throw new SQLException("Invalid User Name/Password");
         }
     }
 
