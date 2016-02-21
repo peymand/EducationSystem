@@ -28,7 +28,7 @@ public class SemesterPanel extends JSplitPane {
 
             @Override
             public void addEventOccurred(Semester value) {
-
+                semesterTable.addAndRefresh(value);
             }
 
             @Override
