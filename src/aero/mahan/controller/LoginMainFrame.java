@@ -35,7 +35,7 @@ public class LoginMainFrame extends JFrame {
                         adminMainFrame = new AdminMainFrame();
 
                     } else
-                        JOptionPane.showMessageDialog(null, "Frame is not implemented");
+                        JOptionPane.showMessageDialog(null, "Frame has not implemented");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
