@@ -25,7 +25,7 @@ public class SemesterPanel extends JSplitPane {
         this.setBottomComponent(semesterTable);
         semesterForm.setISemesterNotifier(new IsemesterNotifier() {
 
-
+            //changed with zahra
             @Override
             public void addEventOccurred(Semester value) {
                 semesterTable.addAndRefresh(value);
