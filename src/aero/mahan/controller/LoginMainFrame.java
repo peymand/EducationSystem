@@ -13,6 +13,7 @@ public class LoginMainFrame extends JFrame {
     
     LoginForm loginForm;
     LoginBLO loginBLO;
+    AdminMainFrame adminMainFrame;
 
     public LoginMainFrame(){
 
@@ -30,7 +31,12 @@ public class LoginMainFrame extends JFrame {
             @Override
            public void loginEventOccurred(String username, String password) {
                 try {
-                    loginBLO.checkUser(username, password);
+                    if ( loginBLO.checkUser(username, password)==1){
+                        adminMainFrame=new AdminMainFrame();
+                    }else
+                        JOptionPane.showMessageDialog(null,"Frame is not implemented");
+
+            //        loginBLO.checkUser(username, password);
 
                } catch (SQLException e) {
 

@@ -24,6 +24,7 @@ public class LoginForm extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         createFields();
     }
+
     public void setiLoginNotifer(IloginNotifier loginNotifier) {
         this.iloginNotifier = loginNotifier;
     }
@@ -57,7 +58,6 @@ public class LoginForm extends JPanel {
         add(passwordField, layout);
 
         loginBtn= createLoginButton("Login" );
-
         layout.gridx = 1;
         layout.gridy = 2;
         add(loginBtn, layout);
@@ -65,7 +65,6 @@ public class LoginForm extends JPanel {
 
     private JButton createLoginButton(String login) {
         JButton myButton = new JButton(login);
-
         myButton.setVisible(true);
         myButton.setSize(25, 30);
         myButton.addActionListener(new ActionListener() {

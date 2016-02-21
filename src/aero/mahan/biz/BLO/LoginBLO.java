@@ -12,8 +12,8 @@ public class LoginBLO {
         loginDAO = new LoginDAO();
     }
 
-    public void checkUser(String username,String password) throws SQLException{
-        loginDAO.checkUser(username,password);
+    public Integer checkUser(String username,String password) throws SQLException{
+        return loginDAO.checkUser(username,password);
     }
 
 }

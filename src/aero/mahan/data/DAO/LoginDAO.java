@@ -8,27 +8,31 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class LoginDAO {
     DbUtil dbUtil;
     private Statement st;
 
-    public void checkUser(String userName, String passWord) throws SQLException {
+    public Integer checkUser(String userName, String passWord) throws SQLException {
         dbUtil = new DbUtil();
         dbUtil.connect();
         st = dbUtil.con.createStatement();
-
+        String result;
+        Person person = new Person();
         ResultSet res = st.executeQuery("SELECT [Username],[Password],[Id_Type] FROM [JavaTraining].[dbo].[Edu_Core_User]   where Username='" + userName + "'and Password='" + passWord + "'");
 
-//        Person person = new Person();
-//        person.setUsername(res.getString("Username"));
-//        person.setPassword(res.getString("Password"));
-//        person.setIdType(res.getInt("Id_Type"));
         if (res.next()) {
-            new AdminMainFrame();
+            person.setIdType(res.getInt("Id_Type"));
+            if (person.getIdType()==1){
+                return 1;
+            }else if (person.getIdType()==2){
+                return 2;
+            }else
+                return 3;
+
 
         } else {
-//            JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
             throw new SQLException("Invalid User Name/Password");
         }
     }
