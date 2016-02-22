@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by 92474747 on 1/26/2016.
  */
-public class SemesterForm extends JPanel {
+public class professorForm extends JPanel {
 
     private JLabel academicYear, semesterNo;
     private JTextField academicYearText, semesterNoText;
