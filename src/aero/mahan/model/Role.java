@@ -6,7 +6,7 @@ package aero.mahan.model;
 public enum Role {
 
     admin("Admin"),
-    teacher("Teacher"),
+    professor("Professor"),
     student("Student");
 
     String title;
