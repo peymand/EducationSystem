@@ -20,6 +20,7 @@ public class AdminMainFrame extends JFrame {
     JTabbedPane semesterTab;
     SemesterPanel semesterPanel;
     SemesterBLO semesterBLO;
+    ArrayList<Semester> semesters;
 
     public AdminMainFrame() {
         super("Administration Environment");
@@ -31,14 +32,26 @@ public class AdminMainFrame extends JFrame {
         semesterTab = new JTabbedPane();
         this.add(semesterTab, BorderLayout.CENTER);
 
-        semesterPanel = new SemesterPanel(JSplitPane.VERTICAL_SPLIT);
+        semesterPanel = new SemesterPanel();
         semesterTab.insertTab("Semester", null, semesterPanel, null, 0);
         semesterTab.setTabPlacement(JTabbedPane.TOP);
-
-
+        semesterBLO = new SemesterBLO();
+        semesters = new ArrayList<>();
+        loadSemesterFromDB();
 
     }
 
+    public void loadSemesterFromDB(){
+        try {
+            semesters = semesterBLO.loadSemesters();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        setDataToSemesterTablePanel(semesters);
+    }
+    public void setDataToSemesterTablePanel(ArrayList<Semester> semesters){
+        semesterPanel.setSemesterArrayList(semesters);
+    }
 
 
 }

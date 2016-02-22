@@ -17,19 +17,8 @@ public class SemesterTableModel extends AbstractTableModel {
     private String[] column = {"Semester Name", "Term"};
     private ArrayList<Semester> semesterArrayList;
 
-    private SemesterDAO db;
-
-    public void addSemesterArrayList(Semester semester) {
-        getSemesterArrayList().add(semester);
-    }
-    public void deleteSemesterArrayList(Semester semester) {
-        getSemesterArrayList().remove(semester);
-    }
-
-    public SemesterTableModel() throws SQLException {
-        db = new SemesterDAO();
-        setSemesterArrayList(db.read());
-
+    public SemesterTableModel() {
+        semesterArrayList= new ArrayList<Semester>();
 
     }
 
@@ -42,7 +31,7 @@ public class SemesterTableModel extends AbstractTableModel {
     @Override
     public int getRowCount() {
 
-        return getSemesterArrayList().size();
+        return semesterArrayList.size();
 
     }
 
@@ -55,9 +44,9 @@ public class SemesterTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
-        for (int i = 0; i < getSemesterArrayList().size(); i++) {
+        for (int i = 0; i < semesterArrayList.size(); i++) {
 
-            Semester s = getSemesterArrayList().get(row);
+            Semester s = semesterArrayList.get(row);
             switch (col) {
                 case 0:
                     return s.getSemesterYear();
@@ -78,10 +67,10 @@ public class SemesterTableModel extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object value, int row, int col) {
-        if (getSemesterArrayList() == null) {
+        if (semesterArrayList == null) {
             return;
         }
-        Semester s = (Semester) getSemesterArrayList().get(row);
+        Semester s = (Semester) semesterArrayList.get(row);
 
         switch (col) {
 
@@ -101,10 +90,6 @@ public class SemesterTableModel extends AbstractTableModel {
                 break;
         }
 
-    }
-
-    public ArrayList<Semester> getSemesterArrayList() {
-        return semesterArrayList;
     }
 
     public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {

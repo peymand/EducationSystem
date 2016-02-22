@@ -6,6 +6,7 @@ import aero.mahan.view.tables.models.SemesterTableModel;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by 92474747 on 1/26/2016.
@@ -16,36 +17,32 @@ public class SemesterTable extends JPanel {
 
 
     public SemesterTable() {
-        try {
-            setSemesterTableModel(new SemesterTableModel());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        semestrTable = new JTable(getSemesterTableModel());
+        semesterTableModel = new SemesterTableModel();
+        semestrTable = new JTable(semesterTableModel);
         this.add(new JScrollPane(semestrTable), BorderLayout.CENTER);
         semestrTable.setRowHeight(50);
 
     }
 
-    public void Refresh() {
+    public void refresh() {
         getSemesterTableModel().fireTableDataChanged();
     }
-
-    public void addAndRefresh(Semester semester) {
-
-        getSemesterTableModel().addSemesterArrayList(semester);
-        Refresh();
-    }
-    public void deleteAndRefresh(Semester semester){
-        getSemesterTableModel().deleteSemesterArrayList(semester);
-        Refresh();
-    }
+//
+//    public void addAndRefresh(Semester semester) {
+//
+//        getSemesterTableModel().addSemesterArrayList(semester);
+//        Refresh();
+//    }
+//    public void deleteAndRefresh(Semester semester){
+//        getSemesterTableModel().deleteSemesterArrayList(semester);
+//        Refresh();
+//    }
 
     public SemesterTableModel getSemesterTableModel() {
         return semesterTableModel;
     }
-
-    public void setSemesterTableModel(SemesterTableModel semesterTableModel) {
-        this.semesterTableModel = semesterTableModel;
+    public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
+        this.semesterTableModel.setSemesterArrayList(semesterArrayList);
+        this.refresh();
     }
 }
