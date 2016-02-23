@@ -1,7 +1,7 @@
 package aero.mahan.controller;
 
 import aero.mahan.biz.BLO.SemesterBLO;
-import aero.mahan.view.panels.ProfessorPanel;
+import aero.mahan.view.panels.SemesterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ public class AdminMainFrame extends JFrame {
 
 
     JTabbedPane semesterTab;
-    ProfessorPanel semesterPanel;
+    SemesterPanel semesterPanel;
     SemesterBLO semesterBLO;
 
     public AdminMainFrame() {
@@ -27,7 +27,7 @@ public class AdminMainFrame extends JFrame {
         semesterTab = new JTabbedPane();
         this.add(semesterTab, BorderLayout.CENTER);
 
-        semesterPanel = new ProfessorPanel(JSplitPane.VERTICAL_SPLIT);
+        semesterPanel = new SemesterPanel();
         semesterTab.insertTab("Semester", null, semesterPanel, null, 0);
         semesterTab.setTabPlacement(JTabbedPane.TOP);
 
