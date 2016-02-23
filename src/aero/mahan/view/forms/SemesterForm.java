@@ -33,14 +33,15 @@ public class SemesterForm extends JPanel {
     }
 
     public SemesterForm() {
+
         Dimension dim = new Dimension();
         dim.height = 200;
         dim.width = 700;
         setPreferredSize(dim);
         setMinimumSize(dim);
-        TitledBorder professorTitledBorder = new TitledBorder("Academic Year");
+        TitledBorder semesterTitledBorder = new TitledBorder("Academic Year");
         EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
+        setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
 
         academicYear = new JLabel("Academic Year:");
