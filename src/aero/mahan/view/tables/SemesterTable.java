@@ -19,8 +19,9 @@ public class SemesterTable extends JPanel {
     public SemesterTable() {
         semesterTableModel = new SemesterTableModel();
         semestrTable = new JTable(semesterTableModel);
+
         this.add(new JScrollPane(semestrTable), BorderLayout.CENTER);
-        semestrTable.setRowHeight(50);
+        semestrTable.setRowHeight(30);
 
     }
 
