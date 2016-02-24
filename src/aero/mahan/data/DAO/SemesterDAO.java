@@ -12,7 +12,9 @@ import java.util.ArrayList;
  */
 public class SemesterDAO {
 
-    public void SemesterDAO(){
+    DbUtil dbUtil;
+    public SemesterDAO(){
+        dbUtil = new DbUtil();
     }
 
     public void save(ArrayList<Semester> semestersArray) throws SQLException {
@@ -106,7 +108,6 @@ public class SemesterDAO {
    }
 
     public ArrayList<Semester> read() throws SQLException {
-        DbUtil dbUtil = new DbUtil();
         dbUtil.connect();
         String semesterReadSQLCommand = "select * from [JavaTraining].[dbo].[Edu_Core_Semester]";
         Statement semesterListStatement = dbUtil.con.createStatement();
@@ -166,6 +167,12 @@ public class SemesterDAO {
             sb.append(digit);
         }
         return sb.toString();
+    }
+
+    public ArrayList<Semester> loadSemester() throws SQLException {
+        ArrayList<Semester> output = new ArrayList<>();
+        output = this.read();
+        return output;
     }
 
 //    public static void main(String[] args) throws SQLException {

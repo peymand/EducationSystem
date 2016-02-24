@@ -13,6 +13,10 @@ public class SemesterBLO {
 
     SemesterDAO semesterDAO;
 
+    public  SemesterBLO (){
+        semesterDAO = new SemesterDAO();
+    }
+
 
     public void save(ArrayList<Semester> semesters) throws SQLException {
 
@@ -20,5 +24,7 @@ public class SemesterBLO {
     }
 
 
-
+    public ArrayList<Semester> loadSemesters() throws SQLException {
+        return semesterDAO.loadSemester();
+    }
 }

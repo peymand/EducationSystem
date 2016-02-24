@@ -15,19 +15,22 @@ public class LoginDAO {
         st = dbUtil.con.createStatement();
         Person person;
         ResultSet res = st.executeQuery("SELECT [Username],[Password],[Id_Type] FROM [JavaTraining].[dbo].[Edu_Core_User]   where Username='" + userName + "'and Password='" + passWord + "'");
-
         if (res.next()) {
             person = new Person();
             person.setIdType(res.getInt("Id_Type"));
             if (person.getIdType() == 1) {
+                dbUtil.disConnect();
                 return 1;
             } else if (person.getIdType() == 2) {
+                dbUtil.disConnect();
                 return 2;
-            } else
+            } else{
+                dbUtil.disConnect();
                 return 3;
+            }
         } else {
+            dbUtil.disConnect();
             throw new SQLException("Invalid User Name/Password");
         }
     }
-
 }

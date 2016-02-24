@@ -33,18 +33,19 @@ public class SemesterForm extends JPanel {
     }
 
     public SemesterForm() {
+
         Dimension dim = new Dimension();
         dim.height = 200;
         dim.width = 700;
         setPreferredSize(dim);
         setMinimumSize(dim);
-        TitledBorder professorTitledBorder = new TitledBorder("Academic Year");
+        TitledBorder semesterTitledBorder = new TitledBorder("Academic Year");
         EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
+        setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
 
         academicYear = new JLabel("Academic Year:");
-        semesterNo = new JLabel("semesterNo:");
+        semesterNo = new JLabel("Semester No:");
 
         academicYearText = new JTextField(10);
         semesterNoText = new JTextField(10);
@@ -108,11 +109,12 @@ public class SemesterForm extends JPanel {
 
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
+//        c.gridwidth =7;
+//        c.gridheight= 3;
 
-
-        c.weighty = 0.05;
-        c.anchor = GridBagConstraints.FIRST_LINE_START;
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weighty = 1;
+        c.weightx = 1;
+        c.anchor = GridBagConstraints.CENTER;
 
         c.gridx = 0;
         c.gridy = 0;
