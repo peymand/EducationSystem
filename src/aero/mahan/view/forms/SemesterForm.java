@@ -49,10 +49,21 @@ public class SemesterForm extends JPanel {
         academicYearText = new JTextField(10);
         semesterNoText = new JTextField(10);
 
-        addBtn = new JButton("Add");
-        saveBtn = new JButton("Save");
-        deleteBtn = new JButton("Delete");
-        editBtn = new JButton("Edit");
+        addBtn = new JButton();
+        ImageIcon addImg = new ImageIcon("resources\\icons\\folder-plus.png");
+        addBtn.setIcon(addImg);
+
+        saveBtn = new JButton();
+        ImageIcon saveImg = new ImageIcon("resources\\icons\\floppy-disk.png");
+        saveBtn.setIcon(saveImg);
+
+        deleteBtn = new JButton();
+        ImageIcon deleteImg = new ImageIcon("resources\\icons\\folder-minus.png");
+        deleteBtn.setIcon(deleteImg);
+
+        editBtn = new JButton();
+        ImageIcon editImg = new ImageIcon("resources\\icons\\pencil.png");
+        editBtn.setIcon(editImg);
 
         addBtn.addActionListener(new ActionListener() {
 
