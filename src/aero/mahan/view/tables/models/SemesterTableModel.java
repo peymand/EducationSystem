@@ -14,12 +14,11 @@ import java.util.ArrayList;
 
 public class SemesterTableModel extends AbstractTableModel {
 
-    private String[] column = {"Semester Name", "Term"};
+    private String[] column = {"Id","Semester Name", "Term"};
     private ArrayList<Semester> semesterArrayList;
 
     public SemesterTableModel() {
         semesterArrayList= new ArrayList<Semester>();
-
     }
 
     @Override
@@ -39,7 +38,6 @@ public class SemesterTableModel extends AbstractTableModel {
     public int getColumnCount() {
 
         return column.length;
-
     }
 
     @Override
@@ -49,20 +47,18 @@ public class SemesterTableModel extends AbstractTableModel {
             Semester s = semesterArrayList.get(row);
             switch (col) {
                 case 0:
-                    return s.getSemesterYear();
+                    return s.getSemesterId();
                 case 1:
+                    return s.getSemesterYear();
+                case 2:
                     return s.getTermNo();
-
-
 
                 default:
 
                     break;
             }
-
         }
         return null;
-
     }
 
     @Override
@@ -75,17 +71,17 @@ public class SemesterTableModel extends AbstractTableModel {
         switch (col) {
 
             case 0:
-                s.setSemesterYear((Integer) value);
+                s.setSemesterId((Integer) value);
 
                 break;
 
             case 1:
-                s.setTermNo((Integer) value);
+                s.setSemesterYear((Integer) value);
 
                 break;
-//            case 2: s.setSemesterId((Integer) value);
-//
-//                break;
+            case 2:
+                s.setTermNo((Integer) value);
+                break;
             default:
                 break;
         }
