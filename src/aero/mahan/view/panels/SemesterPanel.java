@@ -40,8 +40,10 @@ public class SemesterPanel extends JSplitPane {
                     value.setSemesterId(semesters.size() + 1);
                     semesters.add(value);
                     setSemesterArrayList(semesters);
+
                 }
             }
+
 
             @Override
             public void saveEventOccurred(ArrayList<Semester> values) {
