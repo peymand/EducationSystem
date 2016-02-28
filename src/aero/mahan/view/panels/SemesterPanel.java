@@ -61,7 +61,7 @@ public class SemesterPanel extends JSplitPane {
             }
         });
     }
-
+    //check object
     private boolean controllAddObject(Semester value) {
         boolean input = false;
         for (Semester temp : semesters) {
