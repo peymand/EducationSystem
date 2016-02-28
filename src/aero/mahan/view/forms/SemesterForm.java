@@ -18,7 +18,7 @@ public class SemesterForm extends JPanel {
     private JLabel academicYear, semesterNo;
     private JTextField academicYearText, semesterNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
-    private IsemesterNotifier isemesterNotifier;
+    private IsemesterNotifier iSemesterNotifier;
 
     public String getAcademicYearText() {
         return academicYearText.getText();
@@ -29,7 +29,7 @@ public class SemesterForm extends JPanel {
     }
 
     public void setISemesterNotifier(IsemesterNotifier x) {
-        this.isemesterNotifier = x;
+        this.iSemesterNotifier = x;
     }
 
     public SemesterForm() {
@@ -74,7 +74,8 @@ public class SemesterForm extends JPanel {
                 Semester s = new Semester();
                 s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                 s.setTermNo(Integer.parseInt(getSemesterNoText()));
-                isemesterNotifier.addEventOccurred(s);
+                iSemesterNotifier.addEventOccurred(s);
+                
             }
 
         });
@@ -89,7 +90,7 @@ public class SemesterForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                isemesterNotifier.saveEventOccurred(null);
+                iSemesterNotifier.saveEventOccurred(null);
             }
         });
         deleteBtn.addActionListener(new ActionListener() {

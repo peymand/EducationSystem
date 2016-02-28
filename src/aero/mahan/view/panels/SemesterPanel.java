@@ -4,7 +4,6 @@ import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
 import aero.mahan.view.interfaces.IsemesterNotifier;
 import aero.mahan.view.tables.SemesterTable;
-import aero.mahan.view.tables.models.SemesterTableModel;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class SemesterPanel extends JSplitPane {
 
     SemesterForm semesterForm;
     SemesterTable semesterTable;
-
+    ArrayList<Semester> semesters;
 
     public SemesterPanel() {
         super(VERTICAL_SPLIT);
@@ -26,12 +25,17 @@ public class SemesterPanel extends JSplitPane {
         this.setBottomComponent(semesterTable);
 
 
+
+
+
         semesterForm.setISemesterNotifier(new IsemesterNotifier() {
 
             //changed with zahra
             @Override
             public void addEventOccurred(Semester value) {
-//                semesterTable.addAndRefresh(value);
+                value.setSemesterId(semesters.size()+1);
+                semesters.add(value);
+                setSemesterArrayList(semesters);
             }
 
             @Override
@@ -52,6 +56,7 @@ public class SemesterPanel extends JSplitPane {
     }
 
     public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
+        semesters = semesterArrayList;
         semesterTable.setSemesterArrayList(semesterArrayList);
 
     }

@@ -28,21 +28,12 @@ public class SemesterTable extends JPanel {
     public void refresh() {
         getSemesterTableModel().fireTableDataChanged();
     }
-//
-//    public void addAndRefresh(Semester semester) {
-//
-//        getSemesterTableModel().addSemesterArrayList(semester);
-//        Refresh();
-//    }
-//    public void deleteAndRefresh(Semester semester){
-//        getSemesterTableModel().deleteSemesterArrayList(semester);
-//        Refresh();
-//    }
 
     public SemesterTableModel getSemesterTableModel() {
         return semesterTableModel;
     }
     public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
+
         this.semesterTableModel.setSemesterArrayList(semesterArrayList);
         this.refresh();
     }

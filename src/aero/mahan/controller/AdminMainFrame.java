@@ -57,9 +57,12 @@ public class AdminMainFrame extends JFrame {
         }
         setDataToSemesterTablePanel(semesters);
     }
+
     public void setDataToSemesterTablePanel(ArrayList<Semester> semesters){
         semesterPanel.setSemesterArrayList(semesters);
     }
+
+
 
 
 }

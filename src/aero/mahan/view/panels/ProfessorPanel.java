@@ -1,14 +1,9 @@
 package aero.mahan.view.panels;
 
-import aero.mahan.model.Semester;
 import aero.mahan.view.forms.ProfessorForm;
-import aero.mahan.view.forms.SemesterForm;
-import aero.mahan.view.interfaces.IsemesterNotifier;
 import aero.mahan.view.tables.ProfessorTable;
-import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 /**
  * Created by 926365 on 2/22/2016.
