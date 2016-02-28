@@ -6,7 +6,7 @@ package aero.mahan.model;
 public class Semester {
     private int semesterId;
     private int semesterYear;
-    private int termNo;
+    private int semesterNo;
 
     public int getSemesterYear() {
         return semesterYear;
@@ -16,12 +16,12 @@ public class Semester {
         this.semesterYear = semesterYear;
     }
 
-    public int getTermNo() {
-        return termNo;
+    public int getSemesterNo() {
+        return semesterNo;
     }
 
     public void setTermNo(int termNo) {
-        this.termNo = termNo;
+        this.semesterNo = termNo;
     }
 
     public int getSemesterId() {

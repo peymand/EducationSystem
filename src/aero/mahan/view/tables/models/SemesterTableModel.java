@@ -1,10 +1,8 @@
 package aero.mahan.view.tables.models;
 
-import aero.mahan.data.DAO.SemesterDAO;
 import aero.mahan.model.Semester;
 
 import javax.swing.table.AbstractTableModel;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -14,7 +12,7 @@ import java.util.ArrayList;
 
 public class SemesterTableModel extends AbstractTableModel {
 
-    private String[] column = {"Id","Semester Name", "Term"};
+    private String[] column = {"Nember","Semester year", "Semester No"};
     private ArrayList<Semester> semesterArrayList;
 
     public SemesterTableModel() {
@@ -51,7 +49,7 @@ public class SemesterTableModel extends AbstractTableModel {
                 case 1:
                     return s.getSemesterYear();
                 case 2:
-                    return s.getTermNo();
+                    return s.getSemesterNo();
 
                 default:
 

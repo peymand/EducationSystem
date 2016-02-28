@@ -18,7 +18,6 @@ public class SemesterDAO {
     }
 
     public void save(ArrayList<Semester> semestersArray) throws SQLException {
-        DbUtil dbUtil = new DbUtil();
         dbUtil.connect();
         ArrayList<String> semesterYearAndTermArray = selectYearAndTermConcatenatedFromDatBase();
         String insertSemesterQuery = "insert into[JavaTraining].[dbo].[Edu_Core_Semester] (SemesterYear,SemesterNumber) VALUES (?,?)";
@@ -26,9 +25,9 @@ public class SemesterDAO {
         for (Semester semester : semestersArray) {
             PreparedStatement insertSemesterStatement = dbUtil.con.prepareStatement(insertSemesterQuery);
             insertSemesterStatement.setInt(1, semester.getSemesterYear());
-            insertSemesterStatement.setInt(2, semester.getTermNo());
+            insertSemesterStatement.setInt(2, semester.getSemesterNo());
 
-            String concatenatedSemesterYearAndTerm = concatenateDigits(semester.getSemesterYear(),semester.getTermNo());
+            String concatenatedSemesterYearAndTerm = concatenateDigits(semester.getSemesterYear(),semester.getSemesterNo());
             if (semesterYearAndTermArray.contains(concatenatedSemesterYearAndTerm)) {
                 duplicateCounter++;
                 continue;
@@ -50,7 +49,7 @@ public class SemesterDAO {
         ArrayList<String> semesterYearAndTermDBArray = selectYearAndTermConcatenatedFromDatBase();
         ArrayList<String> concatenatedSemesterYearAndTermArray = new ArrayList<String>();
         for (int i = 0; i <semestersArray.size() ; i++) {
-            concatenatedSemesterYearAndTermArray.add(i, concatenateDigits(semestersArray.get(i).getSemesterYear(), semestersArray.get(i).getTermNo()));
+            concatenatedSemesterYearAndTermArray.add(i, concatenateDigits(semestersArray.get(i).getSemesterYear(), semestersArray.get(i).getSemesterNo()));
         }
         String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester] where SemesterYear = ? and semesternumber = ?";
         boolean contains;
@@ -89,11 +88,11 @@ public class SemesterDAO {
             for (int j = 0; j <semesterYearAndTermAndIdDBArray.size() ; j++) {
                 if (semestersArray.get(i).getSemesterId()==semesterYearAndTermAndIdDBArray.get(j).getSemesterId()
                         && (semestersArray.get(i).getSemesterYear()!=semesterYearAndTermAndIdDBArray.get(j).getSemesterYear()
-                        || semestersArray.get(i).getTermNo()!=semesterYearAndTermAndIdDBArray.get(j).getTermNo())){
+                        || semestersArray.get(i).getSemesterNo()!=semesterYearAndTermAndIdDBArray.get(j).getSemesterNo())){
                     updateCounter++;
                     PreparedStatement updateStatement = dbUtil.con.prepareStatement(updateQuery);
                     updateStatement.setInt(1, semestersArray.get(i).getSemesterYear());
-                    updateStatement.setInt(2, semestersArray.get(i).getTermNo());
+                    updateStatement.setInt(2, semestersArray.get(i).getSemesterNo());
                     updateStatement.setInt(3, semesterYearAndTermAndIdDBArray.get(j).getSemesterId());
                     updateStatement.executeUpdate();
                 }
@@ -125,7 +124,6 @@ public class SemesterDAO {
     }
 
     private ArrayList<String> selectYearAndTermConcatenatedFromDatBase() throws SQLException {
-        DbUtil dbUtil = new DbUtil();
         dbUtil.connect();
         String semesterYearAndTermSQLQuery = "select SemesterYear,SemesterNumber from [JavaTraining].[dbo].[Edu_Core_Semester]";
         Statement semesterYearAndTermStmt = dbUtil.con.createStatement();

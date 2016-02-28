@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class SemesterForm extends JPanel {
 
-    private JLabel academicYear, semesterNo;
+    private JLabel semesterYear, semesterNo;
     private JTextField academicYearText, semesterNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
     private IsemesterNotifier iSemesterNotifier;
@@ -44,7 +44,7 @@ public class SemesterForm extends JPanel {
         setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
 
-        academicYear = new JLabel("Academic Year:");
+        semesterYear = new JLabel("Academic Year:");
         semesterNo = new JLabel("Semester No:");
 
         academicYearText = new JTextField(10);
@@ -119,7 +119,7 @@ public class SemesterForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(academicYear, c);
+        add(semesterYear, c);
 
         c.gridx = 0;
         c.gridy = 1;
