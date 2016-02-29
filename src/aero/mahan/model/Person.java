@@ -6,6 +6,8 @@ package aero.mahan.model;
 public class Person {
     private String username;
     private String password;
+    private String name;
+    private String family;
     public int idType;
 
     public void setIdType(int idType) {
