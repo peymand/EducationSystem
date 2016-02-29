@@ -10,6 +10,7 @@ public class Person {
     private String family;
     public int idType;
 
+    //change with nazanin
     public void setIdType(int idType) {
         this.idType = idType;
     }
