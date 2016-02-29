@@ -11,17 +11,17 @@ public class DbUtil {
 
     public boolean connect() throws SQLException {
 
-        if (con != null) {
-            return true;
-        }
+//        if (con != null) {
+//            return true;
+//        }
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionURL = "jdbc:sqlserver://swsql.mahanair.aero;user=sa;password=123;database=javaTraining";
+            con = DriverManager.getConnection(connectionURL);
+            System.out.println("Connected");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.print("Could not Connect");
         }
-        String connectionURL = "jdbc:sqlserver://swsql.mahanair.aero;user=sa;password=123;database=javaTraining";
-        con = DriverManager.getConnection(connectionURL);
-        System.out.println("Connected");
 
         if (con == null) {
             return false;
