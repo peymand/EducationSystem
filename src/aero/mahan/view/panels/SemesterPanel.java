@@ -2,10 +2,12 @@ package aero.mahan.view.panels;
 
 import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
+import aero.mahan.view.interfaces.ISemesterPanelToMainFrame;
 import aero.mahan.view.interfaces.IsemesterNotifier;
 import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,11 @@ public class SemesterPanel extends JSplitPane {
     SemesterForm semesterForm;
     SemesterTable semesterTable;
     ArrayList<Semester> semesters;
+    private ISemesterPanelToMainFrame iSemesterPanelToMainFrame;
+
+
+
+
 
     public SemesterPanel() {
         super(VERTICAL_SPLIT);
@@ -33,11 +40,12 @@ public class SemesterPanel extends JSplitPane {
             public void addEventOccurred(Semester value) {
                 boolean input = controllAddObject(value);
                 if (input == true) {
-                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
-
+                    JOptionPane.showMessageDialog(null, "Record is Duplicated");
                 } else {
                     if (semesters.size()==0){
                         value.setSemesterId(1);
+                        semesters.add(value);
+                        setSemesterArrayList(semesters);
                     }else {
                         value.setSemesterId(semesters.get(semesters.size()-1).getSemesterId() + 1);
                         semesters.add(value);
@@ -46,10 +54,12 @@ public class SemesterPanel extends JSplitPane {
                 }
             }
 
-
             @Override
-            public void saveEventOccurred(ArrayList<Semester> values) {
-
+            public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
+                values = semesters;
+//                if (iSemesterPanelToMainFrame!=null){
+                    iSemesterPanelToMainFrame.saveOccured(values);
+//                }
             }
 
             @Override
@@ -78,5 +88,8 @@ public class SemesterPanel extends JSplitPane {
         semesters = semesterArrayList;
         semesterTable.setSemesterArrayList(semesterArrayList);
 
+    }
+    public void setiSemesterPanelToMainFrame(ISemesterPanelToMainFrame iSemesterPanelToMainFrame) {
+        this.iSemesterPanelToMainFrame = iSemesterPanelToMainFrame;
     }
 }

@@ -16,12 +16,14 @@ public class SemesterDAO {
     }
 
     public void save(ArrayList<Semester> semestersArray) throws SQLException {
+        dbUtil.connect();
         this.delete();
         this.insert(semestersArray);
+        dbUtil.disConnect();
     }
 
     public void insert(ArrayList<Semester> semestersArray) throws SQLException {
-        dbUtil.connect();
+
         String insertSemesterQuery = "insert into[JavaTraining].[dbo].[Edu_Core_Semester] (Id,SemesterYear,SemesterNumber) VALUES (?,?,?)";
         for (Semester semester : semestersArray) {
             PreparedStatement insertSemesterStatement = dbUtil.con.prepareStatement(insertSemesterQuery);
@@ -31,15 +33,13 @@ public class SemesterDAO {
             insertSemesterStatement.execute();
             System.out.println("Semester added");
         }
-        dbUtil.disConnect();
+
     }
 
     public void delete() throws SQLException {
         String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester]";
-        dbUtil.connect();
                 PreparedStatement deleteSemesterStatement = dbUtil.con.prepareStatement(deleteSemesterQuery);
                 deleteSemesterStatement.executeUpdate();
-        dbUtil.disConnect();
     }
 
     public ArrayList<Semester> read() throws SQLException {

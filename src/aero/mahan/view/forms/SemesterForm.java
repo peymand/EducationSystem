@@ -9,6 +9,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 /**
  * Created by 92474747 on 1/26/2016.
@@ -84,7 +85,11 @@ public class SemesterForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                iSemesterNotifier.saveEventOccurred(null);
+                try {
+                    iSemesterNotifier.saveEventOccurred(null);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         deleteBtn.addActionListener(new ActionListener() {
