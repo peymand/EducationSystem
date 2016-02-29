@@ -15,22 +15,11 @@ import java.awt.event.ActionListener;
  */
 public class SemesterForm extends JPanel {
 
-    private JLabel academicYear, semesterNo;
+    private JLabel semesterYear, semesterNo;
     private JTextField academicYearText, semesterNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
     private IsemesterNotifier iSemesterNotifier;
 
-    public String getAcademicYearText() {
-        return academicYearText.getText();
-    }
-
-    public String getSemesterNoText() {
-        return semesterNoText.getText();
-    }
-
-    public void setISemesterNotifier(IsemesterNotifier x) {
-        this.iSemesterNotifier = x;
-    }
 
     public SemesterForm() {
 
@@ -44,7 +33,7 @@ public class SemesterForm extends JPanel {
         setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
 
-        academicYear = new JLabel("Academic Year:");
+        semesterYear = new JLabel("Semester Year:");
         semesterNo = new JLabel("Semester No:");
 
         academicYearText = new JTextField(10);
@@ -75,7 +64,12 @@ public class SemesterForm extends JPanel {
                 s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                 s.setTermNo(Integer.parseInt(getSemesterNoText()));
                 iSemesterNotifier.addEventOccurred(s);
-                
+                CleanFields();
+            }
+
+            private void CleanFields() {
+                academicYearText.setText(null);
+                semesterNoText.setText(null);
             }
 
         });
@@ -103,6 +97,18 @@ public class SemesterForm extends JPanel {
 
     }
 
+    public String getAcademicYearText() {
+        return academicYearText.getText();
+    }
+
+    public String getSemesterNoText() {
+        return semesterNoText.getText();
+    }
+
+    public void setISemesterNotifier(IsemesterNotifier x) {
+        this.iSemesterNotifier = x;
+    }
+
     private void designComponentLayout() {
         GridBagConstraints c = putAcademicYearOnForm();
 
@@ -119,7 +125,7 @@ public class SemesterForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(academicYear, c);
+        add(semesterYear, c);
 
         c.gridx = 0;
         c.gridy = 1;

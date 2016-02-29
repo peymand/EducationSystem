@@ -49,7 +49,7 @@ public class ProfessorTableModel extends AbstractTableModel {
                 case 1:
                     return s.getSemesterYear();
                 case 2:
-                    return s.getTermNo();
+                    return s.getSemesterNo();
 
                 default:
 

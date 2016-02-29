@@ -23,20 +23,27 @@ public class SemesterPanel extends JSplitPane {
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
+        setIsemesterNotifire();
+    }
 
-
-
-
-
+    private void setIsemesterNotifire() {
         semesterForm.setISemesterNotifier(new IsemesterNotifier() {
 
-            //changed with zahra
             @Override
             public void addEventOccurred(Semester value) {
-                value.setSemesterId(semesters.size()+1);
-                semesters.add(value);
-                setSemesterArrayList(semesters);
+
+                boolean input = controllAddObject(value);
+                if (input == true) {
+                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
+
+                } else {
+                    value.setSemesterId(semesters.size() + 1);
+                    semesters.add(value);
+                    setSemesterArrayList(semesters);
+
+                }
             }
+
 
             @Override
             public void saveEventOccurred(ArrayList<Semester> values) {
@@ -53,6 +60,16 @@ public class SemesterPanel extends JSplitPane {
 
             }
         });
+    }
+    //check object
+    private boolean controllAddObject(Semester value) {
+        boolean input = false;
+        for (Semester temp : semesters) {
+            if (value.getSemesterYear() == temp.getSemesterYear() && value.getSemesterNo() == temp.getSemesterNo()) {
+                input = true;
+            }
+        }
+        return input;
     }
 
     public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
