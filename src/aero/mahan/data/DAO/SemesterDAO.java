@@ -34,6 +34,7 @@ public class SemesterDAO {
     }
 
     public void delete() throws SQLException {
+
         dbUtil.connect();
         String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester]";
         PreparedStatement deleteSemesterStatement = dbUtil.con.prepareStatement(deleteSemesterQuery);
