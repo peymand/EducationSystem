@@ -3,6 +3,7 @@ package aero.mahan.view.panels;
 import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
 import aero.mahan.view.interfaces.IsemesterNotifier;
+import aero.mahan.view.interfaces.IsemesterTableNotifier;
 import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
@@ -24,6 +25,14 @@ public class SemesterPanel extends JSplitPane {
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
         setIsemesterNotifire();
+        semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
+            @Override
+            public void rowSelectionEventOccured(Semester value1) {
+            semesterForm.setAcademicYearText(value1.getSemesterYear());
+            semesterForm.setSemesterNoText(value1.getSemesterNo());
+                semesters.remove(value1);
+            }
+        });
     }
 
     private void setIsemesterNotifire() {
@@ -44,6 +53,9 @@ public class SemesterPanel extends JSplitPane {
                         setSemesterArrayList(semesters);
                     }
                 }
+
+
+
             }
 
 
@@ -55,6 +67,19 @@ public class SemesterPanel extends JSplitPane {
             @Override
             public void editEventOccurred(Semester value) {
 
+                boolean input = controllAddObject(value);
+                if (input == true) {
+                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
+
+                } else {
+                    if (semesters.size()==0){
+                        value.setSemesterId(1);
+                    }else {
+                        value.setSemesterId(semesters.get(semesters.size()-1).getSemesterId() + 1);
+                        semesters.add(value);
+                        setSemesterArrayList(semesters);
+                    }
+                }
             }
 
             @Override
@@ -62,6 +87,7 @@ public class SemesterPanel extends JSplitPane {
 
             }
         });
+
     }
     //check object
     private boolean controllAddObject(Semester value) {
@@ -79,4 +105,5 @@ public class SemesterPanel extends JSplitPane {
         semesterTable.setSemesterArrayList(semesterArrayList);
 
     }
+
 }
