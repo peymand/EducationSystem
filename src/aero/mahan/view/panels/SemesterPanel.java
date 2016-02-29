@@ -31,16 +31,18 @@ public class SemesterPanel extends JSplitPane {
 
             @Override
             public void addEventOccurred(Semester value) {
-
                 boolean input = controllAddObject(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
                 } else {
-                    value.setSemesterId(semesters.size() + 1);
-                    semesters.add(value);
-                    setSemesterArrayList(semesters);
-
+                    if (semesters.size()==0){
+                        value.setSemesterId(1);
+                    }else {
+                        value.setSemesterId(semesters.get(semesters.size()-1).getSemesterId() + 1);
+                        semesters.add(value);
+                        setSemesterArrayList(semesters);
+                    }
                 }
             }
 
