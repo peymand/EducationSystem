@@ -85,6 +85,7 @@ public class SemesterForm extends JPanel {
                 s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                 s.setTermNo(Integer.parseInt(getSemesterNoText()));
                 iSemesterNotifier.editEventOccurred(s);
+
             }
         });
         saveBtn.addActionListener(new ActionListener() {
