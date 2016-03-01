@@ -68,15 +68,10 @@ public class SemesterForm extends JPanel {
                 s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                 s.setTermNo(Integer.parseInt(getSemesterNoText()));
                 iSemesterNotifier.addEventOccurred(s);
-                CleanFields();
+                SemesterForm.clreanTextFields(academicYearText,semesterNoText);
             }
-
-            private void CleanFields() {
-                academicYearText.setText(null);
-                semesterNoText.setText(null);
-            }
-
         });
+
 
         editBtn.addActionListener(new ActionListener() {
             @Override
@@ -85,6 +80,7 @@ public class SemesterForm extends JPanel {
                 s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                 s.setTermNo(Integer.parseInt(getSemesterNoText()));
                 iSemesterNotifier.editEventOccurred(s);
+                SemesterForm.clreanTextFields(academicYearText,semesterNoText);
 
             }
         });
@@ -108,6 +104,7 @@ public class SemesterForm extends JPanel {
                 deletedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                 deletedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
                 iSemesterNotifier.deleteEventOccurred(deletedSemester);
+                SemesterForm.clreanTextFields(academicYearText,semesterNoText);
             }
         });
         designComponentLayout();
@@ -178,6 +175,11 @@ public class SemesterForm extends JPanel {
         add(editBtn, c);
 
         return c;
+    }
+
+    public static void clreanTextFields(JTextField academicYearText, JTextField semesterNoText){
+        academicYearText.setText(null);
+        semesterNoText.setText(null);
     }
 
 }
