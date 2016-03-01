@@ -19,10 +19,8 @@ public class SemesterBLO {
 
 
     public void save(ArrayList<Semester> semesters) throws SQLException {
-
         semesterDAO.save(semesters);
     }
-
 
     public ArrayList<Semester> loadSemesters() throws SQLException {
         return semesterDAO.loadSemester();

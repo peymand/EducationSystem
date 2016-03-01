@@ -29,16 +29,16 @@ public class SemesterDAO {
             insertSemesterStatement.setInt(2, semester.getSemesterYear());
             insertSemesterStatement.setInt(3, semester.getSemesterNo());
             insertSemesterStatement.execute();
-            System.out.println("Semester added");
         }
         dbUtil.disConnect();
     }
 
     public void delete() throws SQLException {
-        String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester]";
+
         dbUtil.connect();
-                PreparedStatement deleteSemesterStatement = dbUtil.con.prepareStatement(deleteSemesterQuery);
-                deleteSemesterStatement.executeUpdate();
+        String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester]";
+        PreparedStatement deleteSemesterStatement = dbUtil.con.prepareStatement(deleteSemesterQuery);
+        deleteSemesterStatement.executeUpdate();
         dbUtil.disConnect();
     }
 
@@ -60,7 +60,7 @@ public class SemesterDAO {
     }
 
     public ArrayList<Semester> loadSemester() throws SQLException {
-        ArrayList<Semester> output = new ArrayList<>();
+        ArrayList<Semester> output;
         output = this.read();
         return output;
     }

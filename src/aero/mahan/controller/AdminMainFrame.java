@@ -3,6 +3,7 @@ package aero.mahan.controller;
 import aero.mahan.biz.BLO.SemesterBLO;
 import aero.mahan.data.DAO.SemesterDAO;
 import aero.mahan.model.Semester;
+import aero.mahan.view.interfaces.ISemesterPanelToMainFrame;
 import aero.mahan.view.panels.ProfessorPanel;
 import aero.mahan.view.panels.SemesterPanel;
 
@@ -46,7 +47,12 @@ public class AdminMainFrame extends JFrame {
         professorPanel=new ProfessorPanel();
         semesterTab.insertTab("Professor",null,professorPanel,null,0);
         semesterTab.setTabPlacement(JTabbedPane.TOP);
-
+        semesterPanel.setiSemesterPanelToMainFrame(new ISemesterPanelToMainFrame() {
+            @Override
+            public void saveOccured(ArrayList<Semester> semesters) throws SQLException {
+                semesterBLO.save(semesters);
+            }
+        });
     }
 
     public void loadSemesterFromDB(){
@@ -62,7 +68,9 @@ public class AdminMainFrame extends JFrame {
         semesterPanel.setSemesterArrayList(semesters);
     }
 
+    public void setSemesterPanelNotifier(){
 
+    }
 
 
 }
