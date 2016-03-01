@@ -88,6 +88,7 @@ public class SemesterForm extends JPanel {
 
             }
         });
+
         saveBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,10 +100,14 @@ public class SemesterForm extends JPanel {
                 }
             }
         });
+
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Semester deletedSemester = new Semester();
+                deletedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+                deletedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
+                iSemesterNotifier.deleteEventOccurred(deletedSemester);
             }
         });
         designComponentLayout();

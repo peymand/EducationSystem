@@ -62,8 +62,9 @@ public class SemesterPanel extends JSplitPane {
 
 
             @Override
-            public void saveEventOccurred(ArrayList<Semester> values) {
-
+            public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
+                values = semesters;
+                iSemesterPanelToMainFrame.saveOccured(values);
             }
 
             @Override
