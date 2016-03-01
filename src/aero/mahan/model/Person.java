@@ -10,7 +10,6 @@ public class Person {
     private String family;
     public int idType;
 
-    //change with nazanin
     public void setIdType(int idType) {
         this.idType = idType;
     }
@@ -23,15 +22,29 @@ public class Person {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public void setFamily(String name) {
+        this.family = family;
     }
 
     public int getIdType() {
         return idType;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() { return password; }
+
+    public String getName() { return name; }
+
+    public String getFamily() { return family; }
+
+
+
+
 }
