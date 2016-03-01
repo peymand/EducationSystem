@@ -85,7 +85,9 @@ public class SemesterTableModel extends AbstractTableModel {
         }
 
     }
-
+    public ArrayList<Semester> getSemesterArrayList(){
+        return semesterArrayList;
+    }
     public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
         this.semesterArrayList = semesterArrayList;
     }

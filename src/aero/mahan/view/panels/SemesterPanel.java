@@ -4,6 +4,7 @@ import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
 import aero.mahan.view.interfaces.ISemesterPanelToMainFrame;
 import aero.mahan.view.interfaces.IsemesterNotifier;
+import aero.mahan.view.interfaces.IsemesterTableNotifier;
 import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
@@ -20,10 +21,6 @@ public class SemesterPanel extends JSplitPane {
     ArrayList<Semester> semesters;
     private ISemesterPanelToMainFrame iSemesterPanelToMainFrame;
 
-
-
-
-
     public SemesterPanel() {
         super(VERTICAL_SPLIT);
         this.semesterForm = new SemesterForm();
@@ -31,6 +28,14 @@ public class SemesterPanel extends JSplitPane {
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
         setIsemesterNotifire();
+        semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
+            @Override
+            public void rowSelectionEventOccured(Semester value1) {
+            semesterForm.setAcademicYearText(value1.getSemesterYear());
+            semesterForm.setSemesterNoText(value1.getSemesterNo());
+                semesters.remove(value1);
+            }
+        });
     }
 
     private void setIsemesterNotifire() {
@@ -40,7 +45,8 @@ public class SemesterPanel extends JSplitPane {
             public void addEventOccurred(Semester value) {
                 boolean input = controllAddObject(value);
                 if (input == true) {
-                    JOptionPane.showMessageDialog(null, "Record is Duplicated");
+                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
+
                 } else {
                     if (semesters.size()==0){
                         value.setSemesterId(1);
@@ -54,17 +60,29 @@ public class SemesterPanel extends JSplitPane {
                 }
             }
 
+
             @Override
             public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
                 values = semesters;
-//                if (iSemesterPanelToMainFrame!=null){
-                    iSemesterPanelToMainFrame.saveOccured(values);
-//                }
+                iSemesterPanelToMainFrame.saveOccured(values);
             }
 
             @Override
             public void editEventOccurred(Semester value) {
 
+                boolean input = controllAddObject(value);
+                if (input == true) {
+                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
+
+                } else {
+                    if (semesters.size()==0){
+                        value.setSemesterId(1);
+                    }else {
+                        value.setSemesterId(semesters.get(semesters.size()-1).getSemesterId() + 1);
+                        semesters.add(value);
+                        setSemesterArrayList(semesters);
+                    }
+                }
             }
 
             @Override

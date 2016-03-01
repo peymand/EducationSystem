@@ -17,6 +17,9 @@ import java.sql.SQLException;
 public class SemesterForm extends JPanel {
 
     private JLabel semesterYear, semesterNo;
+
+
+
     private JTextField academicYearText, semesterNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
     private IsemesterNotifier iSemesterNotifier;
@@ -78,9 +81,14 @@ public class SemesterForm extends JPanel {
         editBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Semester s = new Semester();
+                s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+                s.setTermNo(Integer.parseInt(getSemesterNoText()));
+                iSemesterNotifier.editEventOccurred(s);
 
             }
         });
+
         saveBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -92,10 +100,14 @@ public class SemesterForm extends JPanel {
                 }
             }
         });
+
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Semester deletedSemester = new Semester();
+                deletedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+                deletedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
+                iSemesterNotifier.deleteEventOccurred(deletedSemester);
             }
         });
         designComponentLayout();
@@ -105,7 +117,12 @@ public class SemesterForm extends JPanel {
     public String getAcademicYearText() {
         return academicYearText.getText();
     }
-
+    public void setAcademicYearText(int text){
+        this.academicYearText.setText(String.valueOf(text));
+    }
+    public void setSemesterNoText(int semesterNoText) {
+        this.semesterNoText.setText(String.valueOf(semesterNoText));
+    }
     public String getSemesterNoText() {
         return semesterNoText.getText();
     }
