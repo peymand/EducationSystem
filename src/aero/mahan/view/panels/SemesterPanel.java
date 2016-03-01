@@ -87,7 +87,8 @@ public class SemesterPanel extends JSplitPane {
 
             @Override
             public void deleteEventOccurred(Semester value) {
-
+                semesters.remove(value);
+                setSemesterArrayList(semesters);
             }
         });
     }
