@@ -114,12 +114,15 @@ public class SemesterForm extends JPanel {
     public String getAcademicYearText() {
         return academicYearText.getText();
     }
+
     public void setAcademicYearText(int text){
         this.academicYearText.setText(String.valueOf(text));
     }
+
     public void setSemesterNoText(int semesterNoText) {
         this.semesterNoText.setText(String.valueOf(semesterNoText));
     }
+
     public String getSemesterNoText() {
         return semesterNoText.getText();
     }
