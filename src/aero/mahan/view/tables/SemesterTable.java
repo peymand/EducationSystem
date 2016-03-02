@@ -32,14 +32,15 @@ public class SemesterTable extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 Semester semester = new Semester();
                 int row = semestrTable.rowAtPoint(e.getPoint());
-                semester = (Semester)semesterTableModel.getSemesterArrayList().get(row);
-                isemesterTableNotifier.rowSelectionEventOccured(semester);
-            }
+                semester = semesterTableModel.getSemesterArrayList().get(row);
+                isemesterTableNotifier.rowSelectionEventOccured(semester, row);}
         });
     }
+
     public void setIsemesterTableNotifier(IsemesterTableNotifier value){
-        isemesterTableNotifier = value ;
+        this.isemesterTableNotifier = value ;
     }
+
     public void refresh() {
         getSemesterTableModel().fireTableDataChanged();
     }
@@ -47,6 +48,7 @@ public class SemesterTable extends JPanel {
     public SemesterTableModel getSemesterTableModel() {
         return semesterTableModel;
     }
+
     public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
 
         this.semesterTableModel.setSemesterArrayList(semesterArrayList);
