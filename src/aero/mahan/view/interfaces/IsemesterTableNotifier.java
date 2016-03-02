@@ -7,5 +7,5 @@ import aero.mahan.model.Semester;
  */
 public interface IsemesterTableNotifier {
 
-    void rowSelectionEventOccured(Semester value1);
+    void rowSelectionEventOccured(Semester value1, int index);
 }
