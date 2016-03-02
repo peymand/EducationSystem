@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SemesterTableModel extends AbstractTableModel {
 
-    private String[] column = {"Nember","Semester year", "Semester No"};
+    private String[] column = {"Number","Semester year", "Semester No"};
     private ArrayList<Semester> semesterArrayList;
 
     public SemesterTableModel() {

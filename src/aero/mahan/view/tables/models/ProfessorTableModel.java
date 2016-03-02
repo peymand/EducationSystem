@@ -1,5 +1,6 @@
 package aero.mahan.view.tables.models;
 
+import aero.mahan.model.Professor;
 import aero.mahan.model.Semester;
 
 import javax.swing.event.TableModelListener;
@@ -13,72 +14,71 @@ import java.util.ArrayList;
 public class ProfessorTableModel extends AbstractTableModel {
 
     private String[] column = {"Id","Name", "Family", "Degree", "Number"};
-    private ArrayList<Semester> semesterArrayList;
+    private ArrayList<Professor> professorArrayList;
 
     public ProfessorTableModel() {
-        semesterArrayList= new ArrayList<Semester>();
+        professorArrayList= new ArrayList<Professor>();
     }
-
     @Override
     public String getColumnName(int i) {
 
         return this.column[i];
     }
-
     @Override
     public int getRowCount() {
 
-        return semesterArrayList.size();
-
+        return professorArrayList.size();
     }
-
 //    @Override
     public int getColumnCount() {
 
         return column.length;
     }
-
     @Override
     public Object getValueAt(int row, int col) {
-        for (int i = 0; i < semesterArrayList.size(); i++) {
+        for (int i = 0; i < professorArrayList.size(); i++) {
 
-            Semester s = semesterArrayList.get(row);
+            Professor p = professorArrayList.get(row);
             switch (col) {
                 case 0:
-                    return s.getSemesterId();
+                    return p.getProfessorId();
                 case 1:
-                    return s.getSemesterYear();
+                    return p.getName();
                 case 2:
-                    return s.getSemesterNo();
-
+                    return p.getFamily();
+                case 3:
+                    return p.getDegree();
+                case 4:
+                    return p.getProfessorNo();
                 default:
-
                     break;
             }
         }
         return null;
     }
-
     @Override
     public void setValueAt(Object value, int row, int col) {
-        if (semesterArrayList == null) {
+        if (professorArrayList == null) {
             return;
         }
-        Semester s = (Semester) semesterArrayList.get(row);
+        Professor p = (Professor) professorArrayList.get(row);
 
         switch (col) {
 
             case 0:
-                s.setSemesterId((Integer) value);
-
+                p.setProfessorId((Integer) value);
                 break;
-
             case 1:
-                s.setSemesterYear((Integer) value);
-
+                p.setName((String) value);
                 break;
             case 2:
-                s.setTermNo((Integer) value);
+                p.setFamily((String) value);
+                break;
+            case 3:
+                p.setDegree((String) value);
+                break;
+            case 4:
+                p.setProfessorNo((Integer) value);
                 break;
             default:
                 break;
@@ -86,8 +86,12 @@ public class ProfessorTableModel extends AbstractTableModel {
 
     }
 
-    public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
-        this.semesterArrayList = semesterArrayList;
+    public void setProfessorArrayList(ArrayList<Professor> professorArrayList) {
+        this.professorArrayList = professorArrayList;
+    }
+
+    public ArrayList<Professor> getProfessorArrayList() {
+        return professorArrayList;
     }
 }
 

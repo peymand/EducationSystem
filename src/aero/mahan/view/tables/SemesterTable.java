@@ -16,17 +16,21 @@ import java.util.ArrayList;
  * Created by 92474747 on 1/26/2016.
  */
 public class SemesterTable extends JPanel {
+
     private SemesterTableModel semesterTableModel;
     private JTable semestrTable;
     private IsemesterTableNotifier isemesterTableNotifier;
 
 
     public SemesterTable() {
+
         semesterTableModel = new SemesterTableModel();
         semestrTable = new JTable(semesterTableModel);
 
         this.add(new JScrollPane(semestrTable), BorderLayout.CENTER);
+
         semestrTable.setRowHeight(30);
+
         semestrTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

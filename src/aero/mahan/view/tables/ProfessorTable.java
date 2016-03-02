@@ -1,11 +1,15 @@
 package aero.mahan.view.tables;
 
+import aero.mahan.model.Professor;
 import aero.mahan.model.Semester;
+import aero.mahan.view.interfaces.IProfessorTableNotifier;
 import aero.mahan.view.tables.models.ProfessorTableModel;
 import aero.mahan.view.tables.models.SemesterTableModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +17,10 @@ import java.util.ArrayList;
  */
 public class ProfessorTable extends JPanel {
 
-    ProfessorTableModel professorTableModel;
+    private ProfessorTableModel professorTableModel;
     private JTable professorTable;
+    private IProfessorTableNotifier iProfessorTableNotifier;
+
 
     public ProfessorTable() {
         professorTableModel = new ProfessorTableModel();
@@ -23,30 +29,50 @@ public class ProfessorTable extends JPanel {
         this.add(new JScrollPane(professorTable), BorderLayout.CENTER);
         professorTable.setRowHeight(30);
 
+        professorTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Professor professor = new Professor();
+                int row = professorTable.rowAtPoint(e.getPoint());
+                professor = (Professor)professorTableModel.getProfessorArrayList().get(row);
+                getiProfessorTableNotifier().rowSelectionEventOccured(professor);
+            }
+        });
+    }
+    public void setIProfessorTableNotifier(IProfessorTableNotifier value) {
+        this.iProfessorTableNotifier = value;
     }
 
-//    public void refresh() {
-//        getSemesterTableModel().fireTableDataChanged();
-//    }
-//
-//    public void addAndRefresh(Semester semester) {
-//
-//        getSemesterTableModel().addSemesterArrayList(semester);
-//        Refresh();
-//    }
-//    public void deleteAndRefresh(Semester semester){
-//        getSemesterTableModel().deleteSemesterArrayList(semester);
-//        Refresh();
-//    }
+    public void refresh() {
+        getProfessorTableModel().fireTableDataChanged();
+    }
 
-//    public SemesterTableModel getSemesterTableModel() {
-//        return professorTableModel;
+//    public void addAndRefresh(Professor professor) {
+//        getProfessorTableModel().addProfessorArrayList(professor);
+//        Refresh();
 //    }
-//    public void setSemesterArrayList(ArrayList<Semester> semesterArrayList) {
-//        this.professorTableModel.setSemesterArrayList(semesterArrayList);
-//        this.refresh();
+//    public void deleteAndRefresh(Professor professor){
+//        getProfessorTableModel().deleteProfessorArrayList(professor);
+//        Refresh();
+//    }
+    public ProfessorTableModel getProfessorTableModel() {
+        return professorTableModel;
+    }
+
+    public void setProfessorArrayList(ArrayList<Professor> professorArrayList) {
+        this.getProfessorTableModel().setProfessorArrayList(professorArrayList);
+        this.refresh();
+    }
+
+  
+
+  //    public void setProfessorTableModel(ProfessorTableModel professorTableModel) {
+//        this.professorTableModel = professorTableModel;
 //    }
 //
+    public IProfessorTableNotifier getiProfessorTableNotifier() {
+        return iProfessorTableNotifier;
+    }
 
 
 }

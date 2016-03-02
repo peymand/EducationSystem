@@ -1,5 +1,7 @@
 package aero.mahan.view.forms;
 
+import aero.mahan.view.interfaces.IprofessorNotifier;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -13,7 +15,7 @@ public class ProfessorForm extends JPanel {
     private JLabel name, family,password,degree,professorNo;
     private JTextField nameText, familyText, passwordText, degreeText, professorNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
-   // private IprofessorNotifier iprofessorNotifier;
+    private IprofessorNotifier iprofessorNotifier;
 
     public String getNameText() {
         return nameText.getText();
@@ -35,9 +37,10 @@ public class ProfessorForm extends JPanel {
         return professorNoText.getText();
     }
 
- //   public void setISemesterNotifier(IsemesterNotifier x) {
-//        this.iprofessorNotifier = x;
-//    }
+
+       public void setIProfessorNotifier(IprofessorNotifier x) {
+        this.iprofessorNotifier = x;
+    }
 
     public ProfessorForm() {
 

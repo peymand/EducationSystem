@@ -1,9 +1,11 @@
 package aero.mahan.view.panels;
 
+import aero.mahan.model.Professor;
 import aero.mahan.view.forms.ProfessorForm;
 import aero.mahan.view.tables.ProfessorTable;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Created by 926365 on 2/22/2016.
@@ -22,16 +24,16 @@ import javax.swing.*;
             this.setTopComponent(professorForm);
             this.setBottomComponent(professorTable);
 
-//            semesterForm.setISemesterNotifier(new IsemesterNotifier() {
-//
-//                //changed with zahra
+//            professorForm.setISemesterNotifier(new IsemesterNotifier() {
+
+//                changed with zahra
 //                @Override
-//                public void addEventOccurred(Semester value) {
+//                public void addEventOccurred(Professor value) {
 //                    professorTable.addAndRefresh(value);
 //                }
-//
+
 //                @Override
-//                public void saveEventOccurred(ArrayList<Semester> values) {
+//                public void saveEventOccurred(ArrayList<Professor> values) {
 //
 //                }
 //
