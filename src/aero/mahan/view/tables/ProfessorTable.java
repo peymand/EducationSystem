@@ -72,6 +72,8 @@ public class ProfessorTable extends JPanel {
 //
     public IProfessorTableNotifier getiProfessorTableNotifier() {
         return iProfessorTableNotifier;
+
+        //this is the cmment
     }
 
 
