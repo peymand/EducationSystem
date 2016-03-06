@@ -5,42 +5,77 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-/**
- * Created by 926365 on 2/22/2016.
- */
 public class ProfessorForm extends JPanel {
 
-    private JLabel name, family,password,degree,professorNo;
-    private JTextField nameText, familyText, passwordText, degreeText, professorNoText;
+    private JLabel nameLbl, familyLbl, passwordLbl, degreeLbl, professorNoLbl;
+    private JTextField nameTxt, familyTxt, passwordTxt, degreeTxt, professorNoTxt;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
-   // private IprofessorNotifier iprofessorNotifier;
-
-    public String getNameText() {
-        return nameText.getText();
-    }
-
-    public String getFamilyText() {
-        return familyText.getText();
-    }
-
-    public String getPasswordText() {
-        return passwordText.getText();
-    }
-
-    public String getDegreeText() {
-        return degreeText.getText();
-    }
-
-    public String getProfessorNoText() {
-        return professorNoText.getText();
-    }
-
- //   public void setISemesterNotifier(IsemesterNotifier x) {
-//        this.iprofessorNotifier = x;
-//    }
+//    private IprofessorNotifier iprofessorNotifier;
 
     public ProfessorForm() {
 
+        setProfessorBorder();
+        setLayout(new GridBagLayout());
+        createProfessorsFieldsandBtns();
+        designComponentLayout();
+    }
+
+//    public String getNameTxt() {
+//        return nameTxt.getText();
+//    }
+//
+//    public String getFamilyTxt() {
+//        return familyTxt.getText();
+//    }
+//
+//    public String getPasswordTxt() {
+//        return passwordTxt.getText();
+//    }
+//
+//    public String getDegreeTxt() {
+//        return degreeTxt.getText();
+//    }
+//
+//    public String getProfessorNoTxt() {
+//        return professorNoTxt.getText();
+//    }
+
+//    public void setISemesterNotifier(IsemesterNotifier x) {
+//        this.iprofessorNotifier = x;
+//    }
+
+    private void createProfessorsFieldsandBtns() {
+        nameLbl = new JLabel("Name:");
+        familyLbl = new JLabel("Family:");
+        passwordLbl = new JLabel("Password:");
+        degreeLbl = new JLabel("Degree:");
+        professorNoLbl = new JLabel("Professor No:");
+
+
+        nameTxt = new JTextField(10);
+        familyTxt = new JTextField(10);
+        passwordTxt = new JTextField(10);
+        degreeTxt = new JTextField(10);
+        professorNoTxt = new JTextField(10);
+
+        addBtn = new JButton();
+        ImageIcon addImg = new ImageIcon("resources\\icons\\folder-plus.png");
+        addBtn.setIcon(addImg);
+
+        saveBtn = new JButton();
+        ImageIcon saveImg = new ImageIcon("resources\\icons\\floppy-disk.png");
+        saveBtn.setIcon(saveImg);
+
+        deleteBtn = new JButton();
+        ImageIcon deleteImg = new ImageIcon("resources\\icons\\folder-minus.png");
+        deleteBtn.setIcon(deleteImg);
+
+        editBtn = new JButton();
+        ImageIcon editImg = new ImageIcon("resources\\icons\\pencil.png");
+        editBtn.setIcon(editImg);
+    }
+
+    private void setProfessorBorder() {
         Dimension dim = new Dimension();
         dim.height = 300;
         dim.width = 900;
@@ -49,28 +84,8 @@ public class ProfessorForm extends JPanel {
         TitledBorder professorTitledBorder = new TitledBorder("Professor");
         EtchedBorder innerBorder = new EtchedBorder(2);
         setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
-        setLayout(new GridBagLayout());
-
-        name = new JLabel("Name:");
-        family = new JLabel("Family:");
-        password = new JLabel("Password:");
-        degree = new JLabel("Degree:");
-        professorNo = new JLabel("Professor No:");
-
-
-        nameText = new JTextField(10);
-        familyText = new JTextField(10);
-        passwordText = new JTextField(10);
-        degreeText = new JTextField(10);
-        professorNoText = new JTextField(10);
-
-
-        addBtn = new JButton("Add");
-        saveBtn = new JButton("Save");
-        deleteBtn = new JButton("Delete");
-        editBtn = new JButton("Edit");
-        designComponentLayout();
     }
+
     private void designComponentLayout() {
         GridBagConstraints c = putProfessorOnForm();
 
@@ -86,47 +101,47 @@ public class ProfessorForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(name, c);
+        add(nameLbl, c);
 
         c.gridx = 3;
         c.gridy = 0;
-        add(family, c);
+        add(familyLbl, c);
 
         c.gridx = 0;
         c.gridy = 1;
-        add(password, c);
+        add(passwordLbl, c);
 
         c.gridx = 3;
         c.gridy = 1;
-        add(degree, c);
+        add(degreeLbl, c);
 
         c.gridx = 0;
         c.gridy = 2;
-        add(professorNo, c);
+        add(professorNoLbl, c);
 
         c.gridx = 1;
         c.gridy = 0;
-        add(nameText, c);
+        add(nameTxt, c);
 
         c.gridx = 4;
         c.gridy = 0;
-        add(familyText, c);
+        add(familyTxt, c);
 
         c.gridx = 1;
         c.gridy = 1;
-        add(passwordText, c);
+        add(passwordTxt, c);
 
         c.gridx = 4;
         c.gridy = 1;
-        add(degreeText, c);
+        add(degreeTxt, c);
 
         c.gridx = 1;
         c.gridy = 2;
-        add(professorNoText, c);
+        add(professorNoTxt, c);
 
         c.gridx = 0;
         c.gridy = 3;
-        add(addBtn , c);
+        add(addBtn, c);
 
         c.gridx = 1;
         c.gridy = 3;
@@ -143,7 +158,5 @@ public class ProfessorForm extends JPanel {
         return c;
 
     }
-
-
 }
 
