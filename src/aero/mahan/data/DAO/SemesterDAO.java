@@ -34,7 +34,6 @@ public class SemesterDAO {
     }
 
     public void delete() throws SQLException {
-
         dbUtil.connect();
         String deleteSemesterQuery ="delete from [JavaTraining].[dbo].[Edu_Core_Semester]";
         PreparedStatement deleteSemesterStatement = dbUtil.con.prepareStatement(deleteSemesterQuery);
@@ -65,13 +64,4 @@ public class SemesterDAO {
         return output;
     }
 
-    //   public void update(ArrayList<Semester> semestersArray) throws SQLException {
-//        dbUtil.connect();
-//        String updateQuery = "UPDATE [dbo].[Edu_Core_Semester] SET [SemesterYear] = ? ,[SemesterNumber] = ?  WHERE Id=?";
-//                    PreparedStatement updateStatement = dbUtil.con.prepareStatement(updateQuery);
-//                    updateStatement.setInt(1, semestersArray.get(i).getSemesterYear());
-//                    updateStatement.setInt(2, semestersArray.get(i).getSemesterNo());
-//                    updateStatement.executeUpdate();
-//       dbUtil.disConnect();
-//   }
 }

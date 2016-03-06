@@ -17,9 +17,6 @@ import java.sql.SQLException;
 public class SemesterForm extends JPanel {
 
     private JLabel semesterYear, semesterNo;
-
-
-
     private JTextField academicYearText, semesterNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
     private IsemesterNotifier iSemesterNotifier;
@@ -138,8 +135,6 @@ public class SemesterForm extends JPanel {
 
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
-//        c.gridwidth =7;
-//        c.gridheight= 3;
 
         c.weighty = 1;
         c.weightx = 1;

@@ -28,7 +28,7 @@ public class SemesterPanel extends JSplitPane {
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
-        setIsemesterNotifire();
+        setISemesterNotifire();
         semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
             @Override
             public void rowSelectionEventOccured(Semester value1,int row) {
@@ -39,12 +39,12 @@ public class SemesterPanel extends JSplitPane {
         });
     }
 
-    private void setIsemesterNotifire() {
+    private void setISemesterNotifire() {
         semesterForm.setISemesterNotifier(new IsemesterNotifier() {
 
             @Override
             public void addEventOccurred(Semester value) {
-                boolean input = controllAddObject(value);
+                boolean input = controlAddObject(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
@@ -61,7 +61,6 @@ public class SemesterPanel extends JSplitPane {
                 }
             }
 
-
             @Override
             public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
                 values = semesters;
@@ -71,7 +70,7 @@ public class SemesterPanel extends JSplitPane {
             @Override
             public void editEventOccurred(Semester value) {
 
-                boolean input = controllAddObject(value);
+                boolean input = controlAddObject(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
@@ -90,7 +89,7 @@ public class SemesterPanel extends JSplitPane {
         });
     }
     //check object
-    private boolean controllAddObject(Semester value) {
+    private boolean controlAddObject(Semester value) {
         boolean input = false;
         for (Semester temp : semesters) {
             if (value.getSemesterYear() == temp.getSemesterYear() && value.getSemesterNo() == temp.getSemesterNo()) {
@@ -105,7 +104,8 @@ public class SemesterPanel extends JSplitPane {
         semesterTable.setSemesterArrayList(semesterArrayList);
 
     }
-    public void setiSemesterPanelToMainFrame(ISemesterPanelToMainFrame iSemesterPanelToMainFrame) {
+
+    public void setISemesterPanelToMainFrame(ISemesterPanelToMainFrame iSemesterPanelToMainFrame) {
         this.iSemesterPanelToMainFrame = iSemesterPanelToMainFrame;
     }
 }
