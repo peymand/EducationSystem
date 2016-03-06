@@ -11,34 +11,55 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-/**
- * Created by 92474747 on 1/26/2016.
- */
-public class SemesterForm extends JPanel {
+public class SemesterForm extends JPanel implements ActionListener {
 
-    private JLabel semesterYear, semesterNo;
-    private JTextField academicYearText, semesterNoText;
+    private JLabel semesterYearLbl, semesterNoLbl;
+    private JTextField semesterYearTxt, semesterNoTxt;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
     private IsemesterNotifier iSemesterNotifier;
 
 
     public SemesterForm() {
 
-        Dimension dim = new Dimension();
-        dim.height = 200;
-        dim.width = 700;
-        setPreferredSize(dim);
-        setMinimumSize(dim);
-        TitledBorder semesterTitledBorder = new TitledBorder("Academic Year");
-        EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
+        setSemesterBorder();
         setLayout(new GridBagLayout());
+        createSemestersFieldsandBtns();
+        designComponentLayout();
+        addBtn.addActionListener(this);
+        editBtn.addActionListener(this);
+        deleteBtn.addActionListener(this);
+        saveBtn.addActionListener(this);
 
-        semesterYear = new JLabel("Semester Year:");
-        semesterNo = new JLabel("Semester No:");
 
-        academicYearText = new JTextField(10);
-        semesterNoText = new JTextField(10);
+    }
+
+
+    public String getSemesterYearTxt() {
+        return semesterYearTxt.getText();
+    }
+
+    public void setSemesterYearTxt(int text) {
+        this.semesterYearTxt.setText(String.valueOf(text));
+    }
+
+    public void setSemesterNoTxt(int semesterNoTxt) {
+        this.semesterNoTxt.setText(String.valueOf(semesterNoTxt));
+    }
+
+    public String getSemesterNoTxt() {
+        return semesterNoTxt.getText();
+    }
+
+    public void setISemesterNotifier(IsemesterNotifier x) {
+        this.iSemesterNotifier = x;
+    }
+
+    private void createSemestersFieldsandBtns() {
+        semesterYearLbl = new JLabel("Semester Year:");
+        semesterNoLbl = new JLabel("Semester No:");
+
+        semesterYearTxt = new JTextField(10);
+        semesterNoTxt = new JTextField(10);
 
         addBtn = new JButton();
         ImageIcon addImg = new ImageIcon("resources\\icons\\folder-plus.png");
@@ -55,78 +76,19 @@ public class SemesterForm extends JPanel {
         editBtn = new JButton();
         ImageIcon editImg = new ImageIcon("resources\\icons\\pencil.png");
         editBtn.setIcon(editImg);
-
-        addBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent event) {
-
-                Semester s = new Semester();
-                s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                s.setTermNo(Integer.parseInt(getSemesterNoText()));
-                iSemesterNotifier.addEventOccurred(s);
-                SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-            }
-        });
-
-
-        editBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Semester s = new Semester();
-                s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                s.setTermNo(Integer.parseInt(getSemesterNoText()));
-                iSemesterNotifier.editEventOccurred(s);
-                SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-
-            }
-        });
-
-        saveBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                try {
-                    iSemesterNotifier.saveEventOccurred(null);
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
-        deleteBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Semester deletedSemester = new Semester();
-                deletedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                deletedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
-                iSemesterNotifier.deleteEventOccurred(deletedSemester);
-                SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-            }
-        });
-        designComponentLayout();
-
     }
 
-    public String getAcademicYearText() {
-        return academicYearText.getText();
+    private void setSemesterBorder() {
+        Dimension dim = new Dimension();
+        dim.height = 200;
+        dim.width = 700;
+        setPreferredSize(dim);
+        setMinimumSize(dim);
+        TitledBorder semesterTitledBorder = new TitledBorder("Semester Information");
+        EtchedBorder innerBorder = new EtchedBorder(2);
+        setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
     }
 
-    public void setAcademicYearText(int text){
-        this.academicYearText.setText(String.valueOf(text));
-    }
-
-    public void setSemesterNoText(int semesterNoText) {
-        this.semesterNoText.setText(String.valueOf(semesterNoText));
-    }
-
-    public String getSemesterNoText() {
-        return semesterNoText.getText();
-    }
-
-    public void setISemesterNotifier(IsemesterNotifier x) {
-        this.iSemesterNotifier = x;
-    }
 
     private void designComponentLayout() {
         GridBagConstraints c = putAcademicYearOnForm();
@@ -142,19 +104,19 @@ public class SemesterForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(semesterYear, c);
+        add(semesterYearLbl, c);
 
         c.gridx = 0;
         c.gridy = 1;
-        add(semesterNo, c);
+        add(semesterNoLbl, c);
 
         c.gridx = 1;
         c.gridy = 0;
-        add(academicYearText, c);
+        add(semesterYearTxt, c);
 
         c.gridx = 1;
         c.gridy = 1;
-        add(semesterNoText, c);
+        add(semesterNoTxt, c);
 
         c.gridx = 0;
         c.gridy = 3;
@@ -175,9 +137,50 @@ public class SemesterForm extends JPanel {
         return c;
     }
 
-    public static void cleanTextFields(JTextField academicYearText, JTextField semesterNoText){
+    public static void cleanTextFields(JTextField academicYearText, JTextField semesterNoText) {
         academicYearText.setText(null);
         semesterNoText.setText(null);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addBtn) {
+            add();
+            SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
+        } else if (e.getSource() == editBtn) {
+            edit();
+            SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
+        } else if (e.getSource() == deleteBtn) {
+            delete();
+            SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
+        } else {
+            try {
+                iSemesterNotifier.saveEventOccurred(null);
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+    private void delete() {
+        Semester deleteSemester = new Semester();
+        deleteSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
+        deleteSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
+        iSemesterNotifier.deleteEventOccurred(deleteSemester);
+    }
+
+    private void edit() {
+        Semester editSemester = new Semester();
+        editSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
+        editSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
+        iSemesterNotifier.editEventOccurred(editSemester);
+    }
+
+    private void add() {
+        Semester addSemester = new Semester();
+        addSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
+        addSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
+        iSemesterNotifier.addEventOccurred(addSemester);
+    }
 }

@@ -32,8 +32,8 @@ public class SemesterPanel extends JSplitPane {
         semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
             @Override
             public void rowSelectionEventOccured(Semester value1,int row) {
-            semesterForm.setAcademicYearText(value1.getSemesterYear());
-            semesterForm.setSemesterNoText(value1.getSemesterNo());
+            semesterForm.setSemesterYearTxt(value1.getSemesterYear());
+            semesterForm.setSemesterNoTxt(value1.getSemesterNo());
             rowOfSelectedSemester = row;
             }
         });
