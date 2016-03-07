@@ -68,10 +68,19 @@ public class ProfessorForm extends JPanel {
         professorNoText = new JTextField(10);
 
 
-        addBtn = new JButton("Add");
-        saveBtn = new JButton("Save");
-        deleteBtn = new JButton("Delete");
-        editBtn = new JButton("Edit");
+        addBtn = new JButton();
+        ImageIcon addImg = new ImageIcon("resources\\icons\\folder-plus.png");
+        addBtn.setIcon(addImg);
+        saveBtn = new JButton();
+        ImageIcon saveImg = new ImageIcon("resources\\icons\\floppy-disk.png");
+        saveBtn.setIcon(saveImg);
+        deleteBtn = new JButton();
+        ImageIcon deleteImg = new ImageIcon("resources\\icons\\folder-minus.png");
+        deleteBtn.setIcon(deleteImg);
+        editBtn = new JButton();
+        ImageIcon editImg = new ImageIcon("resources\\icons\\pencil.png");
+        editBtn.setIcon(editImg);
+
         designComponentLayout();
     }
     private void designComponentLayout() {
@@ -83,9 +92,9 @@ public class ProfessorForm extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
 
-        c.weighty = 0.001;
-        c.anchor = GridBagConstraints.FIRST_LINE_START;
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weighty = 1;
+        c.weightx = 1;
+        c.anchor = GridBagConstraints.CENTER;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -135,11 +144,11 @@ public class ProfessorForm extends JPanel {
         c.gridy = 3;
         add(saveBtn, c);
 
-        c.gridx = 2;
+        c.gridx = 3;
         c.gridy = 3;
         add(deleteBtn, c);
 
-        c.gridx = 3;
+        c.gridx = 4;
         c.gridy = 3;
         add(editBtn, c);
 
