@@ -1,15 +1,13 @@
 package aero.mahan.view.tables;
 
 import aero.mahan.model.Semester;
-import aero.mahan.view.interfaces.IsemesterTableNotifier;
+import aero.mahan.view.interfaces.IEventTableNotifier;
 import aero.mahan.view.tables.models.SemesterTableModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -17,28 +15,29 @@ import java.util.ArrayList;
  */
 public class SemesterTable extends JPanel {
     private SemesterTableModel semesterTableModel;
-    private JTable semestrTable;
-    private IsemesterTableNotifier isemesterTableNotifier;
+    private JTable semesterTable;
+    private IEventTableNotifier<Semester> semesterIEventTableNotifier;
 
 
     public SemesterTable() {
         semesterTableModel = new SemesterTableModel();
-        semestrTable = new JTable(semesterTableModel);
+        semesterTable = new JTable(semesterTableModel);
 
-        this.add(new JScrollPane(semestrTable), BorderLayout.CENTER);
-        semestrTable.setRowHeight(30);
-        semestrTable.addMouseListener(new MouseAdapter() {
+        this.add(new JScrollPane(semesterTable), BorderLayout.CENTER);
+        semesterTable.setRowHeight(30);
+        semesterTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Semester semester = new Semester();
-                int row = semestrTable.rowAtPoint(e.getPoint());
-                semester = semesterTableModel.getSemesterArrayList().get(row);
-                isemesterTableNotifier.rowSelectionEventOccured(semester, row);}
+                //Semester semester = new Semester();
+                int row = semesterTable.rowAtPoint(e.getPoint());
+                Semester semester = semesterTableModel.getSemesterArrayList().get(row);
+                semesterIEventTableNotifier.rowSelectionEventOccured(semester, row);
+            }
         });
     }
 
-    public void setIsemesterTableNotifier(IsemesterTableNotifier value){
-        this.isemesterTableNotifier = value ;
+    public void setSemesterIEventTableNotifier(IEventTableNotifier<Semester> value){
+        this.semesterIEventTableNotifier = value ;
     }
 
     public void refresh() {

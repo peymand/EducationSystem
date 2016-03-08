@@ -4,7 +4,7 @@ import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
 import aero.mahan.view.interfaces.IEventNotifier;
 import aero.mahan.view.interfaces.ISemesterPanelToMainFrame;
-import aero.mahan.view.interfaces.IsemesterTableNotifier;
+import aero.mahan.view.interfaces.IEventTableNotifier;
 import aero.mahan.view.tables.SemesterTable;
 
 import javax.swing.*;
@@ -29,12 +29,13 @@ public class SemesterPanel extends JSplitPane {
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
         setISemesterNotifire();
-        semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
+        semesterTable.setSemesterIEventTableNotifier(new IEventTableNotifier<Semester>() {
+
             @Override
-            public void rowSelectionEventOccured(Semester value1,int row) {
-            semesterForm.setSemesterYearTxt(value1.getSemesterYear());
-            semesterForm.setSemesterNoTxt(value1.getSemesterNo());
-            rowOfSelectedSemester = row;
+            public void rowSelectionEventOccured(Semester value1, int row) {
+                semesterForm.setSemesterYearTxt(value1.getSemesterYear());
+                semesterForm.setSemesterNoTxt(value1.getSemesterNo());
+                rowOfSelectedSemester = row;
             }
         });
     }

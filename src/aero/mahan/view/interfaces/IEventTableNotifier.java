@@ -5,7 +5,7 @@ import aero.mahan.model.Semester;
 /**
  * Created by airin.khorsandmahand on 2/28/2016.
  */
-public interface IsemesterTableNotifier {
+public interface IEventTableNotifier<T> {
 
-    void rowSelectionEventOccured(Semester value1, int index);
+    void rowSelectionEventOccured(T value1, int index);
 }
