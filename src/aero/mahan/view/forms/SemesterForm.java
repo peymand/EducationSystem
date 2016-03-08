@@ -68,10 +68,8 @@ public class SemesterForm extends JPanel {
             Border border = BorderFactory.createLineBorder(Color.red, 1);
             Border defultBorder = BorderFactory.createLineBorder(Color.black, 1);
 
-          //  URL url1 = System.class.getResource("resources\\icons\\ok.gif");
             ImageIcon imageIcon1 = new ImageIcon("resources\\icons\\ok.gif");
 
-          //  URL url2 = System.class.getResource("resources\\icons\\cancel.gif");
             ImageIcon imageIcon2 = new ImageIcon("resources\\icons\\cancel.gif");
 
             @Override
@@ -81,6 +79,7 @@ public class SemesterForm extends JPanel {
                 if(!Validation.checkTextFieldIsEmpty((getAcademicYearText()))& Validation.acceptOnlyFourDigits(getAcademicYearText())){
                     s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
                     state1.setIcon(imageIcon1);
+                    academicYearText.setBorder(defultBorder);
                 }else {
                     error += "Invalid Year\n";
                     academicYearText.setBorder(border);
@@ -89,6 +88,7 @@ public class SemesterForm extends JPanel {
                 if(!Validation.checkTextFieldIsEmpty(getSemesterNoText())& Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())){
                     s.setTermNo(Integer.parseInt(getSemesterNoText()));
                     state2.setIcon(imageIcon1);
+                    semesterNoText.setBorder(defultBorder);
 
                 }else {
                   error += "Invalid Term No.";
