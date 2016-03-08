@@ -63,11 +63,29 @@ public class SemesterForm extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent event) {
-
                 Semester s = new Semester();
-                s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                s.setTermNo(Integer.parseInt(getSemesterNoText()));
-                iSemesterNotifier.addEventOccurred(s);
+                String error = "";
+                if(!Validation.checkTextFieldIsEmpty((getAcademicYearText()))& Validation.acceptOnlyFourDigits(getAcademicYearText())){
+                    s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+
+                }else {
+                    error += "Invalid Year\n";
+                }
+                if(!Validation.checkTextFieldIsEmpty(getSemesterNoText())& Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())){
+                    s.setTermNo(Integer.parseInt(getSemesterNoText()));
+
+                }else {
+                  error += "Invalid Term No.";
+
+                }
+
+                if(error.equals("")){
+                    iSemesterNotifier.addEventOccurred(s);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,error);
+                }
+
                 SemesterForm.cleanTextFields(academicYearText, semesterNoText);
             }
         });

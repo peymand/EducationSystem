@@ -23,6 +23,13 @@ public class LoginForm extends JPanel {
         setLayout(new GridBagLayout());
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         createFields();
+        //"Enter Key" keyboard action
+        passwordField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iloginNotifier.loginEventOccurred(usernameTxt.getText(), passwordField.getText());
+            }
+        });
     }
 
     public void setiLoginNotifer(IloginNotifier loginNotifier) {
@@ -61,7 +68,9 @@ public class LoginForm extends JPanel {
         layout.gridx = 1;
         layout.gridy = 2;
         add(loginBtn, layout);
+
     }
+
 
     private JButton createLoginButton(String login) {
         JButton myButton = new JButton(login);
