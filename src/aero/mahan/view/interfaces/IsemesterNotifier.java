@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by 92474747 on 1/26/2016.
  */
 public interface IsemesterNotifier {
-//    String test = null;
+
     void addEventOccurred(Semester value);
     void saveEventOccurred(ArrayList<Semester> values) throws SQLException;
     void editEventOccurred(Semester value);
