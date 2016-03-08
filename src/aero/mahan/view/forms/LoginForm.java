@@ -23,6 +23,7 @@ public class LoginForm extends JPanel {
         setLayout(new GridBagLayout());
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         createFields();
+        //"Enter Key" keyboard action
         passwordField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
