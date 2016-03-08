@@ -2,8 +2,8 @@ package aero.mahan.view.panels;
 
 import aero.mahan.model.Semester;
 import aero.mahan.view.forms.SemesterForm;
+import aero.mahan.view.interfaces.IEventNotifier;
 import aero.mahan.view.interfaces.ISemesterPanelToMainFrame;
-import aero.mahan.view.interfaces.IsemesterNotifier;
 import aero.mahan.view.interfaces.IsemesterTableNotifier;
 import aero.mahan.view.tables.SemesterTable;
 
@@ -40,7 +40,7 @@ public class SemesterPanel extends JSplitPane {
     }
 
     private void setISemesterNotifire() {
-        semesterForm.setISemesterNotifier(new IsemesterNotifier() {
+        semesterForm.setSemesterEventNotifier(new IEventNotifier<Semester>() {
 
             @Override
             public void addEventOccurred(Semester value) {
@@ -49,12 +49,12 @@ public class SemesterPanel extends JSplitPane {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
                 } else {
-                    if (semesters.size()==0){
+                    if (semesters.size() == 0) {
                         value.setSemesterId(1);
                         semesters.add(value);
                         setSemesterArrayList(semesters);
-                    }else {
-                        value.setSemesterId(semesters.get(semesters.size()-1).getSemesterId() + 1);
+                    } else {
+                        value.setSemesterId(semesters.get(semesters.size() - 1).getSemesterId() + 1);
                         semesters.add(value);
                         setSemesterArrayList(semesters);
                     }

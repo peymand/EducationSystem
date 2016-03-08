@@ -40,7 +40,7 @@ public class ProfessorForm extends JPanel {
 //        return professorNoTxt.getText();
 //    }
 
-//    public void setISemesterNotifier(IsemesterNotifier x) {
+//    public void setProfessorEventNotifier(IEventNotifier x) {
 //        this.iprofessorNotifier = x;
 //    }
 
