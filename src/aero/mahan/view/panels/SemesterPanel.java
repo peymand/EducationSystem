@@ -41,7 +41,7 @@ public class SemesterPanel extends JSplitPane {
     }
 
     private void setISemesterNotifire() {
-        semesterForm.setSemesterEventNotifier(new IEventNotifier<Semester>() {
+        semesterForm.setSemesterIEventNotifier(new IEventNotifier<Semester>() {
 
             @Override
             public void addEventOccurred(Semester value) {

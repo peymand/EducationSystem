@@ -16,7 +16,7 @@ public class SemesterForm extends JPanel implements ActionListener {
     private JLabel semesterYearLbl, semesterNoLbl;
     private JTextField semesterYearTxt, semesterNoTxt;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
-    private IEventNotifier<Semester> iSemesterNotifier;
+    private IEventNotifier<Semester> semesterIEventNotifier;
 
 
     public SemesterForm() {
@@ -50,8 +50,8 @@ public class SemesterForm extends JPanel implements ActionListener {
         return semesterNoTxt.getText();
     }
 
-    public void setSemesterEventNotifier(IEventNotifier<Semester> x) {
-        this.iSemesterNotifier = x;
+    public void setSemesterIEventNotifier(IEventNotifier<Semester> x) {
+        this.semesterIEventNotifier = x;
     }
 
     private void createSemestersFieldsandBtns() {
@@ -155,7 +155,7 @@ public class SemesterForm extends JPanel implements ActionListener {
             SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
         } else {
             try {
-                iSemesterNotifier.saveEventOccurred(null);
+                semesterIEventNotifier.saveEventOccurred(null);
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
@@ -167,20 +167,20 @@ public class SemesterForm extends JPanel implements ActionListener {
         Semester deleteSemester = new Semester();
         deleteSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
         deleteSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
-        iSemesterNotifier.deleteEventOccurred(deleteSemester);
+        semesterIEventNotifier.deleteEventOccurred(deleteSemester);
     }
 
     private void edit() {
         Semester editSemester = new Semester();
         editSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
         editSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
-        iSemesterNotifier.editEventOccurred(editSemester);
+        semesterIEventNotifier.editEventOccurred(editSemester);
     }
 
     private void add() {
         Semester addSemester = new Semester();
         addSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
         addSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
-        iSemesterNotifier.addEventOccurred(addSemester);
+        semesterIEventNotifier.addEventOccurred(addSemester);
     }
 }

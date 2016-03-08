@@ -22,7 +22,7 @@ import javax.swing.*;
             this.setTopComponent(professorForm);
             this.setBottomComponent(professorTable);
 
-//            semesterForm.setSemesterEventNotifier(new IEventNotifier() {
+//            semesterForm.setSemesterIEventNotifier(new IEventNotifier() {
 //
 //                //changed with zahra
 //                @Override
