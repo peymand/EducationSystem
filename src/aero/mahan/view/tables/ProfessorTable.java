@@ -23,10 +23,12 @@ public class ProfessorTable extends JPanel {
 
 
     public ProfessorTable() {
+        this.setLayout(new GridLayout());
         professorTableModel = new ProfessorTableModel();
-        professorTable = new JTable(professorTableModel);
 
-        this.add(new JScrollPane(professorTable), BorderLayout.CENTER);
+        professorTable = new JTable(professorTableModel);
+        this.add(new JScrollPane(professorTable), BorderLayout.EAST);
+
         professorTable.setRowHeight(30);
 
         professorTable.addMouseListener(new MouseAdapter() {

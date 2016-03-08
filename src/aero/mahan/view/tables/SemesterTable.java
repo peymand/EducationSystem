@@ -23,6 +23,7 @@ public class SemesterTable extends JPanel {
 
 
     public SemesterTable() {
+        this.setLayout(new GridLayout());
 
         semesterTableModel = new SemesterTableModel();
         semestrTable = new JTable(semesterTableModel);
