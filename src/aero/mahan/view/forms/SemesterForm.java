@@ -30,7 +30,6 @@ public class SemesterForm extends JPanel implements ActionListener {
         deleteBtn.addActionListener(this);
         saveBtn.addActionListener(this);
 
-
     }
 
 

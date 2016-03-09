@@ -28,7 +28,7 @@ public class SemesterPanel extends JSplitPane {
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
-        setISemesterNotifire();
+        setSemesterIEventNotifire();
         semesterTable.setSemesterIEventTableNotifier(new IEventTableNotifier<Semester>() {
 
             @Override
@@ -40,7 +40,7 @@ public class SemesterPanel extends JSplitPane {
         });
     }
 
-    private void setISemesterNotifire() {
+    private void setSemesterIEventNotifire() {
         semesterForm.setSemesterIEventNotifier(new IEventNotifier<Semester>() {
 
             @Override
