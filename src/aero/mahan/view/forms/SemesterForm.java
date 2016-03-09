@@ -4,11 +4,13 @@ import aero.mahan.model.Semester;
 import aero.mahan.view.interfaces.IsemesterNotifier;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.SQLException;
 
 /**
@@ -17,7 +19,7 @@ import java.sql.SQLException;
 //test for git
 public class SemesterForm extends JPanel {
 
-    private JLabel semesterYear, semesterNo;
+    private JLabel semesterYear, semesterNo,state1,state2;
 
 
 
@@ -40,6 +42,8 @@ public class SemesterForm extends JPanel {
 
         semesterYear = new JLabel("Semester Year:");
         semesterNo = new JLabel("Semester No:");
+        state1 = new JLabel("");
+        state2= new JLabel("");
 
         academicYearText = new JTextField(10);
         semesterNoText = new JTextField(10);
@@ -62,22 +66,35 @@ public class SemesterForm extends JPanel {
 
         addBtn.addActionListener(new ActionListener() {
 
+            Border border = BorderFactory.createLineBorder(Color.red, 1);
+            Border defultBorder = BorderFactory.createLineBorder(Color.black, 1);
+
+            ImageIcon imageIcon1 = new ImageIcon("resources\\icons\\ok.gif");
+
+            ImageIcon imageIcon2 = new ImageIcon("resources\\icons\\cancel.gif");
+
             @Override
             public void actionPerformed(ActionEvent event) {
                 Semester s = new Semester();
                 String error = "";
                 if(!Validation.checkTextFieldIsEmpty((getAcademicYearText()))& Validation.acceptOnlyFourDigits(getAcademicYearText())){
                     s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-
+                    state1.setIcon(imageIcon1);
+                    academicYearText.setBorder(defultBorder);
                 }else {
                     error += "Invalid Year\n";
+                    academicYearText.setBorder(border);
+                    state1.setIcon(imageIcon2);
                 }
                 if(!Validation.checkTextFieldIsEmpty(getSemesterNoText())& Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())){
                     s.setTermNo(Integer.parseInt(getSemesterNoText()));
+                    state2.setIcon(imageIcon1);
+                    semesterNoText.setBorder(defultBorder);
 
                 }else {
                   error += "Invalid Term No.";
-
+                    semesterNoText.setBorder(border);
+                    state2.setIcon(imageIcon2);
                 }
 
                 if(error.equals("")){
@@ -86,7 +103,6 @@ public class SemesterForm extends JPanel {
                 else {
                     JOptionPane.showMessageDialog(null,error);
                 }
-
                 SemesterForm.cleanTextFields(academicYearText, semesterNoText);
             }
         });
@@ -157,8 +173,6 @@ public class SemesterForm extends JPanel {
 
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
-//        c.gridwidth =7;
-//        c.gridheight= 3;
 
         c.weighty = 1;
         c.weightx = 1;
@@ -172,6 +186,7 @@ public class SemesterForm extends JPanel {
         c.gridy = 1;
         add(semesterNo, c);
 
+
         c.gridx = 1;
         c.gridy = 0;
         add(academicYearText, c);
@@ -180,10 +195,17 @@ public class SemesterForm extends JPanel {
         c.gridy = 1;
         add(semesterNoText, c);
 
+        c.gridx = 2;
+        c.gridy = 0;
+        add(state1, c);
+
+        c.gridx = 2;
+        c.gridy = 1;
+        add(state2, c);
+
         c.gridx = 0;
         c.gridy = 3;
         add(addBtn, c);
-
         c.gridx = 1;
         c.gridy = 3;
         add(saveBtn, c);
