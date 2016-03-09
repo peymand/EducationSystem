@@ -33,8 +33,8 @@ public class SemesterForm extends JPanel implements ActionListener {
     }
 
 
-    public String getSemesterYearTxt() {
-        return semesterYearTxt.getText();
+    public JTextField getSemesterYearTxt() {
+        return semesterYearTxt;
     }
 
     public void setSemesterYearTxt(int text) {
@@ -45,8 +45,8 @@ public class SemesterForm extends JPanel implements ActionListener {
         this.semesterNoTxt.setText(String.valueOf(semesterNoTxt));
     }
 
-    public String getSemesterNoTxt() {
-        return semesterNoTxt.getText();
+    public JTextField getSemesterNoTxt() {
+        return semesterNoTxt;
     }
 
     public void setSemesterIEventNotifier(IEventNotifier<Semester> x) {
@@ -136,8 +136,8 @@ public class SemesterForm extends JPanel implements ActionListener {
         return c;
     }
 
-    public static void cleanTextFields(JTextField academicYearText, JTextField semesterNoText) {
-        academicYearText.setText(null);
+    public static void cleanTextFields(JTextField semesterYearText, JTextField semesterNoText) {
+        semesterYearText.setText(null);
         semesterNoText.setText(null);
     }
 
@@ -145,10 +145,8 @@ public class SemesterForm extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addBtn) {
             add();
-            SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
         } else if (e.getSource() == editBtn) {
             edit();
-            SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
         } else if (e.getSource() == deleteBtn) {
             delete();
             SemesterForm.cleanTextFields(semesterYearTxt, semesterNoTxt);
@@ -164,22 +162,23 @@ public class SemesterForm extends JPanel implements ActionListener {
 
     private void delete() {
         Semester deleteSemester = new Semester();
-        deleteSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
-        deleteSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
+        deleteSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt().getText()));
+        deleteSemester.setTermNo(Integer.parseInt(getSemesterNoTxt().getText()));
         semesterIEventNotifier.deleteEventOccurred(deleteSemester);
     }
 
     private void edit() {
         Semester editSemester = new Semester();
-        editSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
-        editSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
+        editSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt().getText()));
+        editSemester.setTermNo(Integer.parseInt(getSemesterNoTxt().getText()));
         semesterIEventNotifier.editEventOccurred(editSemester);
     }
 
     private void add() {
         Semester addSemester = new Semester();
-        addSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt()));
-        addSemester.setTermNo(Integer.parseInt(getSemesterNoTxt()));
+        addSemester.setSemesterYear(Integer.parseInt(getSemesterYearTxt().getText()));
+        addSemester.setTermNo(Integer.parseInt(getSemesterNoTxt().getText()));
         semesterIEventNotifier.addEventOccurred(addSemester);
+
     }
 }

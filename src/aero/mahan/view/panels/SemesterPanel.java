@@ -28,7 +28,11 @@ public class SemesterPanel extends JSplitPane {
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
-        setSemesterIEventNotifire();
+        setSemesterIEventNotifier();
+        setSemesterIEventTableNotifier();
+    }
+
+    private void setSemesterIEventTableNotifier() {
         semesterTable.setSemesterIEventTableNotifier(new IEventTableNotifier<Semester>() {
 
             @Override
@@ -40,16 +44,17 @@ public class SemesterPanel extends JSplitPane {
         });
     }
 
-    private void setSemesterIEventNotifire() {
+    private void setSemesterIEventNotifier() {
         semesterForm.setSemesterIEventNotifier(new IEventNotifier<Semester>() {
 
             @Override
             public void addEventOccurred(Semester value) {
-                boolean input = controlAddObject(value);
+                boolean input = checkDuplicateData(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
                 } else {
+                    SemesterForm.cleanTextFields(semesterForm.getSemesterYearTxt(), semesterForm.getSemesterNoTxt());
                     if (semesters.size() == 0) {
                         value.setSemesterId(1);
                         semesters.add(value);
@@ -71,16 +76,17 @@ public class SemesterPanel extends JSplitPane {
             @Override
             public void editEventOccurred(Semester value) {
 
-                boolean input = controlAddObject(value);
+                boolean input = checkDuplicateData(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
-
                 } else {
+                    SemesterForm.cleanTextFields(semesterForm.getSemesterYearTxt(), semesterForm.getSemesterNoTxt());
                     semesters.get(rowOfSelectedSemester).setSemesterYear(value.getSemesterYear());
                     semesters.get(rowOfSelectedSemester).setTermNo(value.getSemesterNo());
                     setSemesterArrayList(semesters);
                 }
             }
+
 
             @Override
             public void deleteEventOccurred(Semester value) {
@@ -90,7 +96,7 @@ public class SemesterPanel extends JSplitPane {
         });
     }
     //check object
-    private boolean controlAddObject(Semester value) {
+    private boolean checkDuplicateData(Semester value) {
         boolean input = false;
         for (Semester temp : semesters) {
             if (value.getSemesterYear() == temp.getSemesterYear() && value.getSemesterNo() == temp.getSemesterNo()) {
