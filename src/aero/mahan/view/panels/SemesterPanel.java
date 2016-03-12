@@ -85,17 +85,13 @@ public class SemesterPanel extends JSplitPane {
                 semesters.remove(rowOfSelectedSemester);
                 setSemesterArrayList(semesters);
             }
+
+            @Override
+            public void saveEventOccured() {
+                iSemesterPanelToMainFrame.saveOccured(semesters);
+            }
         });
     }
-
-
-
-//            @Override
-//            public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
-//                values = semesters;
-//                iSemesterPanelToMainFrame.saveOccured(values);
-//            }
-
 
     //check object
     private boolean controllAddObject(Semester value) {

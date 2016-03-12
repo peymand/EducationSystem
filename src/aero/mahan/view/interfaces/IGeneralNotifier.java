@@ -7,4 +7,5 @@ public interface IGeneralNotifier {
     void addEventOccured(Object object);
     void editEventOccured(Object object);
     void deleteEventOccured(Object object);
+    void saveEventOccured();
 }
