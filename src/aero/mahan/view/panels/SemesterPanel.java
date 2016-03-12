@@ -48,22 +48,36 @@ public class SemesterPanel extends JSplitPane {
     private void setGeneralNotifier() {
         crudPanel.setiGeneralNotifier(new IGeneralNotifier() {
             @Override
-            public void eventOccured(Object o) {
-                Semester value = (Semester)o;
+            public void addEventOccured(Object o) {
+                Semester value = (Semester) o;
                 boolean input = controllAddObject(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
                 } else {
-                    if (semesters.size()==0){
+                    if (semesters.size() == 0) {
                         value.setSemesterId(1);
                         semesters.add(value);
                         setSemesterArrayList(semesters);
-                    }else {
-                        value.setSemesterId(semesters.get(semesters.size()-1).getSemesterId() + 1);
+                    } else {
+                        value.setSemesterId(semesters.get(semesters.size() - 1).getSemesterId() + 1);
                         semesters.add(value);
                         setSemesterArrayList(semesters);
                     }
+                }
+            }
+
+            @Override
+            public void editEventOccured(Object object) {
+                Semester value=(Semester)object;
+                boolean input = controllAddObject(value);
+                if (input == true) {
+                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
+
+                } else {
+                    semesters.get(rowOfSelectedSemester).setSemesterYear(value.getSemesterYear());
+                    semesters.get(rowOfSelectedSemester).setTermNo(value.getSemesterNo());
+                    setSemesterArrayList(semesters);
                 }
             }
         });
@@ -88,15 +102,7 @@ public class SemesterPanel extends JSplitPane {
             @Override
             public void editEventOccurred(Semester value) {
 
-                boolean input = controllAddObject(value);
-                if (input == true) {
-                    JOptionPane.showMessageDialog(null, "The record is Duplicate");
 
-                } else {
-                    semesters.get(rowOfSelectedSemester).setSemesterYear(value.getSemesterYear());
-                    semesters.get(rowOfSelectedSemester).setTermNo(value.getSemesterNo());
-                    setSemesterArrayList(semesters);
-                }
             }
 
             @Override
