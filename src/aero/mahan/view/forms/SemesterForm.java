@@ -1,6 +1,8 @@
 package aero.mahan.view.forms;
 
 import aero.mahan.model.Semester;
+import aero.mahan.view.custompanel.CrudPanel;
+import aero.mahan.view.custompanel.CustomJPanel;
 import aero.mahan.view.interfaces.IsemesterNotifier;
 
 import javax.swing.*;
@@ -17,15 +19,25 @@ import java.sql.SQLException;
  * Created by 92474747 on 1/26/2016.
  */
 //test for git
-public class SemesterForm extends JPanel {
+public class SemesterForm extends CustomJPanel {
 
     private JLabel semesterYear, semesterNo,state1,state2;
 
+    private Semester currentSemester;
 
+
+    private IsemesterNotifier iSemesterNotifier;
+
+    public void setCrudPanel(CrudPanel crudPanel) {
+        this.crudPanel = crudPanel;
+        designComponentLayout();
+    }
+
+    private CrudPanel crudPanel;
 
     private JTextField academicYearText, semesterNoText;
-    private JButton addBtn, saveBtn, deleteBtn, editBtn;
-    private IsemesterNotifier iSemesterNotifier;
+
+
 
 
     public SemesterForm() {
@@ -48,66 +60,10 @@ public class SemesterForm extends JPanel {
         academicYearText = new JTextField(10);
         semesterNoText = new JTextField(10);
 
-        addBtn = new JButton();
-        ImageIcon addImg = new ImageIcon("resources\\icons\\folder-plus.png");
-        addBtn.setIcon(addImg);
-
-        saveBtn = new JButton();
-        ImageIcon saveImg = new ImageIcon("resources\\icons\\floppy-disk.png");
-        saveBtn.setIcon(saveImg);
-
-        deleteBtn = new JButton();
-        ImageIcon deleteImg = new ImageIcon("resources\\icons\\folder-minus.png");
-        deleteBtn.setIcon(deleteImg);
-
-        editBtn = new JButton();
-        ImageIcon editImg = new ImageIcon("resources\\icons\\pencil.png");
-        editBtn.setIcon(editImg);
-
-        addBtn.addActionListener(new ActionListener() {
-
-            Border border = BorderFactory.createLineBorder(Color.red, 1);
-            Border defultBorder = BorderFactory.createLineBorder(Color.black, 1);
-
-            ImageIcon imageIcon1 = new ImageIcon("resources\\icons\\ok.gif");
-
-            ImageIcon imageIcon2 = new ImageIcon("resources\\icons\\cancel.gif");
-
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                Semester s = new Semester();
-                String error = "";
-                if(!Validation.checkTextFieldIsEmpty((getAcademicYearText()))& Validation.acceptOnlyFourDigits(getAcademicYearText())){
-                    s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                    state1.setIcon(imageIcon1);
-                    academicYearText.setBorder(defultBorder);
-                }else {
-                    error += "Invalid Year\n";
-                    academicYearText.setBorder(border);
-                    state1.setIcon(imageIcon2);
-                }
-                if(!Validation.checkTextFieldIsEmpty(getSemesterNoText())& Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())){
-                    s.setTermNo(Integer.parseInt(getSemesterNoText()));
-                    state2.setIcon(imageIcon1);
-                    semesterNoText.setBorder(defultBorder);
-
-                }else {
-                  error += "Invalid Term No.";
-                    semesterNoText.setBorder(border);
-                    state2.setIcon(imageIcon2);
-                }
-
-                if(error.equals("")){
-                    iSemesterNotifier.addEventOccurred(s);
-                }
-                else {
-                    JOptionPane.showMessageDialog(null,error);
-                }
-                SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-            }
-        });
 
 
+
+        /*
         editBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -141,11 +97,13 @@ public class SemesterForm extends JPanel {
                 iSemesterNotifier.deleteEventOccurred(deletedSemester);
                 SemesterForm.cleanTextFields(academicYearText, semesterNoText);
             }
-        });
-        designComponentLayout();
+        });*/
+
 
     }
-
+    public CrudPanel getCrudPanel() {
+        return crudPanel;
+    }
     public String getAcademicYearText() {
         return academicYearText.getText();
     }
@@ -170,6 +128,9 @@ public class SemesterForm extends JPanel {
         GridBagConstraints c = putAcademicYearOnForm();
 
     }
+
+
+
 
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
@@ -205,18 +166,8 @@ public class SemesterForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 3;
-        add(addBtn, c);
-        c.gridx = 1;
-        c.gridy = 3;
-        add(editBtn, c);
+        add(this.crudPanel, c);
 
-        c.gridx = 2;
-        c.gridy = 3;
-        add(deleteBtn, c);
-
-        c.gridx = 3;
-        c.gridy = 3;
-        add(saveBtn, c);
 
         return c;
     }
@@ -226,4 +177,44 @@ public class SemesterForm extends JPanel {
         semesterNoText.setText(null);
     }
 
+    @Override
+    public Object getInsertedData() {
+        Border border = BorderFactory.createLineBorder(Color.red, 1);
+        Border defultBorder = BorderFactory.createLineBorder(Color.black, 1);
+
+        ImageIcon imageIcon1 = new ImageIcon("resources\\icons\\ok.gif");
+
+        ImageIcon imageIcon2 = new ImageIcon("resources\\icons\\cancel.gif");
+        Semester newSemester = new Semester();
+        String error = "";
+        if(!Validation.checkTextFieldIsEmpty((getAcademicYearText()))& Validation.acceptOnlyFourDigits(getAcademicYearText())){
+            newSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+            state1.setIcon(imageIcon1);
+            academicYearText.setBorder(defultBorder);
+        }else {
+            error += "Invalid Year\n";
+            academicYearText.setBorder(border);
+            state1.setIcon(imageIcon2);
+        }
+        if(!Validation.checkTextFieldIsEmpty(getSemesterNoText())& Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())){
+            newSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
+            state2.setIcon(imageIcon1);
+            semesterNoText.setBorder(defultBorder);
+
+        }else {
+            error += "Invalid Term No.";
+            semesterNoText.setBorder(border);
+            state2.setIcon(imageIcon2);
+        }
+
+        if(error.equals("")){
+            this.currentSemester = newSemester;
+
+        }
+        else {
+            JOptionPane.showMessageDialog(null,error);
+        }
+        SemesterForm.cleanTextFields(academicYearText, semesterNoText);
+        return this.currentSemester;
+    }
 }

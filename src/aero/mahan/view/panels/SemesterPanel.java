@@ -1,7 +1,9 @@
 package aero.mahan.view.panels;
 
 import aero.mahan.model.Semester;
+import aero.mahan.view.custompanel.CrudPanel;
 import aero.mahan.view.forms.SemesterForm;
+import aero.mahan.view.interfaces.IGeneralNotifier;
 import aero.mahan.view.interfaces.ISemesterPanelToMainFrame;
 import aero.mahan.view.interfaces.IsemesterNotifier;
 import aero.mahan.view.interfaces.IsemesterTableNotifier;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
  */
 public class SemesterPanel extends JSplitPane {
 
+    CrudPanel crudPanel;
     SemesterForm semesterForm;
     SemesterTable semesterTable;
     ArrayList<Semester> semesters;
@@ -25,10 +28,13 @@ public class SemesterPanel extends JSplitPane {
     public SemesterPanel() {
         super(VERTICAL_SPLIT);
         this.semesterForm = new SemesterForm();
+        this.crudPanel = new CrudPanel(this.semesterForm,this);
+        this.semesterForm.setCrudPanel(this.crudPanel);
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
         setIsemesterNotifire();
+        setGeneralNotifier();
         semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
             @Override
             public void rowSelectionEventOccured(Semester value1,int row) {
@@ -39,11 +45,11 @@ public class SemesterPanel extends JSplitPane {
         });
     }
 
-    private void setIsemesterNotifire() {
-        semesterForm.setISemesterNotifier(new IsemesterNotifier() {
-
+    private void setGeneralNotifier() {
+        crudPanel.setiGeneralNotifier(new IGeneralNotifier() {
             @Override
-            public void addEventOccurred(Semester value) {
+            public void eventOccured(Object o) {
+                Semester value = (Semester)o;
                 boolean input = controllAddObject(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
@@ -59,6 +65,17 @@ public class SemesterPanel extends JSplitPane {
                         setSemesterArrayList(semesters);
                     }
                 }
+            }
+        });
+    }
+
+    private void setIsemesterNotifire() {
+
+        semesterForm.setISemesterNotifier(new IsemesterNotifier() {
+
+            @Override
+            public void addEventOccurred(Semester value) {
+
             }
 
 
