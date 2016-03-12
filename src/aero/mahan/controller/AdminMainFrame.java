@@ -49,8 +49,12 @@ public class AdminMainFrame extends JFrame {
         semesterTab.setTabPlacement(JTabbedPane.TOP);
         semesterPanel.setiSemesterPanelToMainFrame(new ISemesterPanelToMainFrame() {
             @Override
-            public void saveOccured(ArrayList<Semester> semesters) throws SQLException {
-                semesterBLO.save(semesters);
+            public void saveOccured(ArrayList<Semester> semesters) {
+                try {
+                    semesterBLO.save(semesters);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         });
     }
