@@ -7,6 +7,7 @@ import aero.mahan.view.tables.models.ProfessorTableModel;
 import aero.mahan.view.tables.models.SemesterTableModel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -40,6 +41,7 @@ public class ProfessorTable extends JPanel {
                 getiProfessorTableNotifier().rowSelectionEventOccured(professor);
             }
         });
+
     }
     public void setIProfessorTableNotifier(IProfessorTableNotifier value) {
         this.iProfessorTableNotifier = value;

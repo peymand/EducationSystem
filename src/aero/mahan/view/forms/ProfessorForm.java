@@ -54,11 +54,11 @@ public class ProfessorForm extends JPanel {
         setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
 
-        name = new JLabel("Name:");
-        family = new JLabel("Family:");
-        password = new JLabel("Password:");
-        degree = new JLabel("Degree:");
-        professorNo = new JLabel("Professor No:");
+        name = new JLabel("    Name:");
+        family = new JLabel("    Family:");
+        password = new JLabel("    Password:");
+        degree = new JLabel("    Degree:");
+        professorNo = new JLabel("    Professor No:");
 
 
         nameText = new JTextField(10);
@@ -94,7 +94,7 @@ public class ProfessorForm extends JPanel {
 
         c.weighty = 1;
         c.weightx = 1;
-        c.anchor = GridBagConstraints.CENTER;
+        c.anchor = GridBagConstraints.LINE_START;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -115,6 +115,7 @@ public class ProfessorForm extends JPanel {
         c.gridx = 0;
         c.gridy = 2;
         add(professorNo, c);
+        c.anchor = GridBagConstraints.CENTER;
 
         c.gridx = 1;
         c.gridy = 0;
@@ -142,7 +143,7 @@ public class ProfessorForm extends JPanel {
 
         c.gridx = 1;
         c.gridy = 3;
-        add(saveBtn, c);
+        add(editBtn, c);
 
         c.gridx = 3;
         c.gridy = 3;
@@ -150,7 +151,7 @@ public class ProfessorForm extends JPanel {
 
         c.gridx = 4;
         c.gridy = 3;
-        add(editBtn, c);
+        add(saveBtn, c);
 
         return c;
 

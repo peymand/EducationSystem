@@ -45,7 +45,7 @@ public class AdminMainFrame extends JFrame {
         loadSemesterFromDB();
 
         professorPanel=new ProfessorPanel();
-        semesterTab.insertTab("Professor",null,professorPanel,null,0);
+        semesterTab.insertTab("Professor",null,professorPanel,null,1);
         semesterTab.setTabPlacement(JTabbedPane.TOP);
         semesterPanel.setiSemesterPanelToMainFrame(new ISemesterPanelToMainFrame() {
             @Override

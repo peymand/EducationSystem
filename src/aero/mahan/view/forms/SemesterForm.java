@@ -40,8 +40,8 @@ public class SemesterForm extends JPanel {
         setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
         setLayout(new GridBagLayout());
 
-        semesterYear = new JLabel("Semester Year:");
-        semesterNo = new JLabel("Semester No:");
+        semesterYear = new JLabel("    Semester Year:");
+        semesterNo = new JLabel("    Semester No:");
         state1 = new JLabel("");
         state2= new JLabel("");
 
@@ -176,7 +176,7 @@ public class SemesterForm extends JPanel {
 
         c.weighty = 1;
         c.weightx = 1;
-        c.anchor = GridBagConstraints.CENTER;
+        c.anchor = GridBagConstraints.LINE_START;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -186,7 +186,7 @@ public class SemesterForm extends JPanel {
         c.gridy = 1;
         add(semesterNo, c);
 
-
+        c.anchor = GridBagConstraints.CENTER;
         c.gridx = 1;
         c.gridy = 0;
         add(academicYearText, c);
@@ -208,7 +208,7 @@ public class SemesterForm extends JPanel {
         add(addBtn, c);
         c.gridx = 1;
         c.gridy = 3;
-        add(saveBtn, c);
+        add(editBtn, c);
 
         c.gridx = 2;
         c.gridy = 3;
@@ -216,7 +216,7 @@ public class SemesterForm extends JPanel {
 
         c.gridx = 3;
         c.gridy = 3;
-        add(editBtn, c);
+        add(saveBtn, c);
 
         return c;
     }

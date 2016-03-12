@@ -5,6 +5,7 @@ import aero.mahan.view.interfaces.IsemesterTableNotifier;
 import aero.mahan.view.tables.models.SemesterTableModel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -40,6 +41,15 @@ public class SemesterTable extends JPanel {
                 semester = semesterTableModel.getSemesterArrayList().get(row);
                 isemesterTableNotifier.rowSelectionEventOccured(semester, row);}
         });
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        semestrTable.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        semestrTable.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        semestrTable.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+
+
+
     }
 
     public void setIsemesterTableNotifier(IsemesterTableNotifier value){
