@@ -28,7 +28,7 @@ public class SemesterPanel extends JSplitPane {
     public SemesterPanel() {
         super(VERTICAL_SPLIT);
         this.semesterForm = new SemesterForm();
-        this.crudPanel = new CrudPanel(this.semesterForm,this);
+        this.crudPanel = new CrudPanel(this.semesterForm);
         this.semesterForm.setCrudPanel(this.crudPanel);
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);

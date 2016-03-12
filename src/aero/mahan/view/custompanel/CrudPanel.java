@@ -16,7 +16,6 @@ public class CrudPanel extends JPanel implements ActionListener {
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
 
     private CustomJPanel source;
-    private JSplitPane destination;
 
 
     public void setiGeneralNotifier(IGeneralNotifier iGeneralNotifier) {
@@ -27,10 +26,10 @@ public class CrudPanel extends JPanel implements ActionListener {
 
 
     ////// Constructor
-    public CrudPanel(CustomJPanel source, JSplitPane destination){
+    public CrudPanel(CustomJPanel source){
 
         this.source = source;
-        this.destination = destination;
+
 
         setLayout(new FlowLayout());
         addBtn = new JButton();
