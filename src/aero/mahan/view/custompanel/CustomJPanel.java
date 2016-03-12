@@ -9,4 +9,5 @@ public abstract class CustomJPanel extends JPanel{
     public abstract Object getInsertedData();
     public abstract Object getEditedData();
     public abstract Object getSelectedData();
+
 }

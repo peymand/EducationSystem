@@ -33,7 +33,6 @@ public class SemesterPanel extends JSplitPane {
         this.semesterTable = new SemesterTable();
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
-        setIsemesterNotifire();
         setGeneralNotifier();
         semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
             @Override
@@ -80,38 +79,24 @@ public class SemesterPanel extends JSplitPane {
                     setSemesterArrayList(semesters);
                 }
             }
-        });
-    }
-
-    private void setIsemesterNotifire() {
-
-        semesterForm.setISemesterNotifier(new IsemesterNotifier() {
 
             @Override
-            public void addEventOccurred(Semester value) {
-
-            }
-
-
-            @Override
-            public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
-                values = semesters;
-                iSemesterPanelToMainFrame.saveOccured(values);
-            }
-
-            @Override
-            public void editEventOccurred(Semester value) {
-
-
-            }
-
-            @Override
-            public void deleteEventOccurred(Semester value) {
+            public void deleteEventOccured(Object object) {
                 semesters.remove(rowOfSelectedSemester);
                 setSemesterArrayList(semesters);
             }
         });
     }
+
+
+
+//            @Override
+//            public void saveEventOccurred(ArrayList<Semester> values) throws SQLException {
+//                values = semesters;
+//                iSemesterPanelToMainFrame.saveOccured(values);
+//            }
+
+
     //check object
     private boolean controllAddObject(Semester value) {
         boolean input = false;
