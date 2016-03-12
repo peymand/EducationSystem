@@ -46,6 +46,7 @@ public class CrudPanel extends JPanel implements ActionListener {
         deleteBtn = new JButton();
         ImageIcon deleteImg = new ImageIcon("resources\\icons\\folder-minus.png");
         deleteBtn.setIcon(deleteImg);
+        deleteBtn.addActionListener(this);
         this.add(deleteBtn);
 
         editBtn = new JButton();
@@ -77,10 +78,14 @@ public class CrudPanel extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == this.editBtn) {
-            Object insertedObject = source.getInsertedData();
+            Object editedObject = source.getEditedData();
             if (iGeneralNotifier != null) {
-                iGeneralNotifier.editEventOccured(insertedObject);
+                iGeneralNotifier.editEventOccured(editedObject);
             }
+        }
+
+        if (e.getSource()== this.deleteBtn){
+            Object selectedObject=source.getSelectedData();
         }
     }
     public static void main(String[] args) {

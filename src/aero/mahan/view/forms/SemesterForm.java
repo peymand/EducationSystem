@@ -26,15 +26,8 @@ public class SemesterForm extends CustomJPanel {
     private Semester currentSemester;
 
 
-    private IsemesterNotifier iSemesterNotifier;
-
-    public void setCrudPanel(CrudPanel crudPanel) {
-        this.crudPanel = crudPanel;
-        designComponentLayout();
-    }
 
     private CrudPanel crudPanel;
-
     private JTextField academicYearText, semesterNoText;
 
 
@@ -64,17 +57,6 @@ public class SemesterForm extends CustomJPanel {
 
 
         /*
-        editBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Semester s = new Semester();
-                s.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                s.setTermNo(Integer.parseInt(getSemesterNoText()));
-                iSemesterNotifier.editEventOccurred(s);
-                SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-
-            }
-        });
 
         saveBtn.addActionListener(new ActionListener() {
             @Override
@@ -88,19 +70,16 @@ public class SemesterForm extends CustomJPanel {
             }
         });
 
-        deleteBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Semester deletedSemester = new Semester();
-                deletedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
-                deletedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
-                iSemesterNotifier.deleteEventOccurred(deletedSemester);
-                SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-            }
-        });*/
+
+        */
 
 
     }
+    public void setCrudPanel(CrudPanel crudPanel) {
+        this.crudPanel = crudPanel;
+        designComponentLayout();
+    }
+
     public CrudPanel getCrudPanel() {
         return crudPanel;
     }
@@ -118,10 +97,6 @@ public class SemesterForm extends CustomJPanel {
 
     public String getSemesterNoText() {
         return semesterNoText.getText();
-    }
-
-    public void setISemesterNotifier(IsemesterNotifier x) {
-        this.iSemesterNotifier = x;
     }
 
     private void designComponentLayout() {
@@ -216,5 +191,23 @@ public class SemesterForm extends CustomJPanel {
         }
         SemesterForm.cleanTextFields(academicYearText, semesterNoText);
         return this.currentSemester;
+    }
+
+    @Override
+    public Object getEditedData() {
+        Semester editedSemester = new Semester();
+        editedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+        editedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
+        SemesterForm.cleanTextFields(academicYearText, semesterNoText);
+       return editedSemester;
+    }
+
+    @Override
+    public Object getSelectedData() {
+        Semester deletedSemester = new Semester();
+        deletedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
+        deletedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
+        SemesterForm.cleanTextFields(academicYearText, semesterNoText);
+        return deletedSemester;
     }
 }
