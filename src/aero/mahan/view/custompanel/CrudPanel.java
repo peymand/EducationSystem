@@ -74,21 +74,21 @@ public class CrudPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.addBtn) {
             Object insertedObject = source.getInsertedData();
-            if (iGeneralNotifier != null) {
+            if (iGeneralNotifier != null && insertedObject!=null) {
                 iGeneralNotifier.addEventOccured(insertedObject);
             }
         }
 
         if (e.getSource() == this.editBtn) {
             Object editedObject = source.getEditedData();
-            if (iGeneralNotifier != null) {
+            if (iGeneralNotifier != null && editedObject!=null ) {
                 iGeneralNotifier.editEventOccured(editedObject);
             }
         }
 
         if (e.getSource()== this.deleteBtn){
             Object selectedObject=source.getSelectedData();
-            if (iGeneralNotifier!=null){
+            if (iGeneralNotifier!=null && selectedObject!=null){
                 iGeneralNotifier.deleteEventOccured(selectedObject);
             }
 
