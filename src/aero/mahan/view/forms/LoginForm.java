@@ -30,35 +30,36 @@ public class LoginForm extends JPanel {
 
     private void createFields() {
         layout = new GridBagConstraints();
-        layout.ipadx = 15;
+        layout.ipadx = 10;
+        layout.ipady = 4;
+
 
         usernameLbl = new JLabel("Username : ");
-        usernameLbl.setVisible(true);
         layout.gridx = 0;
         layout.gridy = 0;
+
         add(usernameLbl, layout);
 
         usernameTxt = new JTextField(15);
-        usernameTxt.setVisible(true);
         layout.gridx = 1;
         layout.gridy = 0;
         add(usernameTxt, layout);
+        layout.insets = new Insets(8,0,0,0);
 
         passwordLbl = new JLabel("Password : ");
-        passwordLbl.setVisible(true);
         layout.gridx = 0;
-        layout.gridy = 1;
+        layout.gridy = 2;
         add(passwordLbl, layout);
 
         passwordField = new JPasswordField(15);
-        passwordField.setVisible(true);
         layout.gridx = 1;
-        layout.gridy = 1;
+        layout.gridy = 2;
         add(passwordField, layout);
 
         loginBtn = createLoginButton("Login");
         layout.gridx = 1;
-        layout.gridy = 2;
+        layout.gridy = 3;
+
         add(loginBtn, layout);
     }
 
