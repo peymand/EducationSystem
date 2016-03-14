@@ -9,9 +9,8 @@ import java.awt.event.ActionListener;
 
 public class LoginForm extends JPanel {
 
-    JLabel usernameLbl;
-    JTextField usernameTxt;
-    JLabel passwordLbl;
+    private JLabel usernameLbl,passwordLbl;
+    private JTextField usernameTxt;
     private JPasswordField passwordField;
     private GridBagConstraints layout;
     private JButton loginBtn;
@@ -21,7 +20,6 @@ public class LoginForm extends JPanel {
         setLayout(new GridBagLayout());
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         createFields();
-        //"Enter Key" keyboard action
         passwordField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

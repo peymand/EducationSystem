@@ -21,43 +21,20 @@ import java.sql.SQLException;
 //test for git
 public class SemesterForm extends CustomJPanel {
 
-    private JLabel semesterYear, semesterNo,state1,state2;
-
+    private JLabel semesterYear, semesterNo, state1, state2;
     private Semester currentSemester;
-
-
-
     private CrudPanel crudPanel;
     private JTextField academicYearText, semesterNoText;
 
 
-
-
     public SemesterForm() {
 
-        Dimension dim = new Dimension();
-        dim.height = 200;
-        dim.width = 700;
-        setPreferredSize(dim);
-        setMinimumSize(dim);
-        TitledBorder semesterTitledBorder = new TitledBorder("Academic Year");
-        EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
+        setDimension();
+        setBorder();
         setLayout(new GridBagLayout());
-
-        semesterYear = new JLabel("    Semester Year:");
-        semesterNo = new JLabel("    Semester No:");
-        state1 = new JLabel("");
-        state2= new JLabel("");
-
-        academicYearText = new JTextField(10);
-        semesterNoText = new JTextField(10);
-
-
-
+        createFields();
 
         /*
-
         saveBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,22 +49,13 @@ public class SemesterForm extends CustomJPanel {
 
 
         */
-
-
-    }
-    public void setCrudPanel(CrudPanel crudPanel) {
-        this.crudPanel = crudPanel;
-        designComponentLayout();
     }
 
-    public CrudPanel getCrudPanel() {
-        return crudPanel;
-    }
     public String getAcademicYearText() {
         return academicYearText.getText();
     }
 
-    public void setAcademicYearText(int text){
+    public void setAcademicYearText(int text) {
         this.academicYearText.setText(String.valueOf(text));
     }
 
@@ -99,13 +67,44 @@ public class SemesterForm extends CustomJPanel {
         return semesterNoText.getText();
     }
 
+    public void setCrudPanel(CrudPanel crudPanel) {
+        this.crudPanel = crudPanel;
+        designComponentLayout();
+    }
+
+    public CrudPanel getCrudPanel() {
+        return crudPanel;
+    }
+
+
+    private void createFields() {
+        semesterYear = new JLabel("    Semester Year:");
+        semesterNo = new JLabel("    Semester No:");
+        state1 = new JLabel("");
+        state2 = new JLabel("");
+
+        academicYearText = new JTextField(10);
+        semesterNoText = new JTextField(10);
+    }
+
+    private void setBorder() {
+        TitledBorder semesterTitledBorder = new TitledBorder("Academic Year");
+        EtchedBorder innerBorder = new EtchedBorder(2);
+        setBorder(BorderFactory.createCompoundBorder(semesterTitledBorder, innerBorder));
+    }
+
+    private void setDimension() {
+        Dimension dim = new Dimension();
+        dim.height = 200;
+        dim.width = 700;
+        setPreferredSize(dim);
+        setMinimumSize(dim);
+    }
+
     private void designComponentLayout() {
         GridBagConstraints c = putAcademicYearOnForm();
 
     }
-
-
-
 
     public GridBagConstraints putAcademicYearOnForm() {
         GridBagConstraints c = new GridBagConstraints();
@@ -147,7 +146,7 @@ public class SemesterForm extends CustomJPanel {
         return c;
     }
 
-    public static void cleanTextFields(JTextField academicYearText, JTextField semesterNoText){
+    public static void cleanTextFields(JTextField academicYearText, JTextField semesterNoText) {
         academicYearText.setText(null);
         semesterNoText.setText(null);
     }
@@ -162,32 +161,31 @@ public class SemesterForm extends CustomJPanel {
         ImageIcon imageIcon2 = new ImageIcon("resources\\icons\\cancel.gif");
         Semester newSemester = new Semester();
         String error = "";
-        if(!Validation.checkTextFieldIsEmpty((getAcademicYearText()))& Validation.acceptOnlyFourDigits(getAcademicYearText())){
+        if (!Validation.checkTextFieldIsEmpty((getAcademicYearText())) & Validation.acceptOnlyFourDigits(getAcademicYearText())) {
             newSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
             state1.setIcon(imageIcon1);
             academicYearText.setBorder(defultBorder);
-        }else {
+        } else {
             error += "Invalid Year\n";
             academicYearText.setBorder(border);
             state1.setIcon(imageIcon2);
         }
-        if(!Validation.checkTextFieldIsEmpty(getSemesterNoText())& Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())){
+        if (!Validation.checkTextFieldIsEmpty(getSemesterNoText()) & Validation.acceptDigitBetweenOneAndThree(getSemesterNoText())) {
             newSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
             state2.setIcon(imageIcon1);
             semesterNoText.setBorder(defultBorder);
 
-        }else {
+        } else {
             error += "Invalid Term No.";
             semesterNoText.setBorder(border);
             state2.setIcon(imageIcon2);
         }
 
-        if(error.equals("")){
+        if (error.equals("")) {
             this.currentSemester = newSemester;
 
-        }
-        else {
-            JOptionPane.showMessageDialog(null,error);
+        } else {
+            JOptionPane.showMessageDialog(null, error);
         }
         SemesterForm.cleanTextFields(academicYearText, semesterNoText);
         return this.currentSemester;
@@ -199,7 +197,7 @@ public class SemesterForm extends CustomJPanel {
         editedSemester.setSemesterYear(Integer.parseInt(getAcademicYearText()));
         editedSemester.setTermNo(Integer.parseInt(getSemesterNoText()));
         SemesterForm.cleanTextFields(academicYearText, semesterNoText);
-       return editedSemester;
+        return editedSemester;
     }
 
     @Override

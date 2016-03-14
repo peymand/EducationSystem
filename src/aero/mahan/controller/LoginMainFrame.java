@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class LoginMainFrame extends JFrame {
 
-    LoginForm loginForm;
-    LoginBLO loginBLO;
+    private LoginForm loginForm;
+    private LoginBLO loginBLO;
     AdminMainFrame adminMainFrame;
 
     public LoginMainFrame() {
@@ -32,7 +32,7 @@ public class LoginMainFrame extends JFrame {
                 try {
                     if (loginBLO.checkUser(username, password) == 1) {
                         dispose();
-                        adminMainFrame = new AdminMainFrame();
+                         adminMainFrame = new AdminMainFrame();
 
                     } else
                         JOptionPane.showMessageDialog(null, "Frame has not implemented");

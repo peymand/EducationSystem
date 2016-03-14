@@ -18,12 +18,12 @@ import java.util.ArrayList;
  */
 public class SemesterPanel extends JSplitPane {
 
-    CrudPanel crudPanel;
-    SemesterForm semesterForm;
-    SemesterTable semesterTable;
-    ArrayList<Semester> semesters;
+    private CrudPanel crudPanel;
+    private SemesterForm semesterForm;
+    private SemesterTable semesterTable;
+    private ArrayList<Semester> semesters;
     private ISemesterPanelToMainFrame iSemesterPanelToMainFrame;
-    int rowOfSelectedSemester;
+    private int rowOfSelectedSemester;
 
     public SemesterPanel() {
         super(VERTICAL_SPLIT);
@@ -34,12 +34,16 @@ public class SemesterPanel extends JSplitPane {
         this.setTopComponent(semesterForm);
         this.setBottomComponent(semesterTable);
         setGeneralNotifier();
+        setSemesterNotifier();
+    }
+
+    private void setSemesterNotifier() {
         semesterTable.setIsemesterTableNotifier(new IsemesterTableNotifier() {
             @Override
-            public void rowSelectionEventOccured(Semester value1,int row) {
-            semesterForm.setAcademicYearText(value1.getSemesterYear());
-            semesterForm.setSemesterNoText(value1.getSemesterNo());
-            rowOfSelectedSemester = row;
+            public void rowSelectionEventOccured(Semester value1, int row) {
+                semesterForm.setAcademicYearText(value1.getSemesterYear());
+                semesterForm.setSemesterNoText(value1.getSemesterNo());
+                rowOfSelectedSemester = row;
             }
         });
     }
@@ -68,7 +72,7 @@ public class SemesterPanel extends JSplitPane {
 
             @Override
             public void editEventOccured(Object object) {
-                Semester value=(Semester)object;
+                Semester value = (Semester) object;
                 boolean input = controllAddObject(value);
                 if (input == true) {
                     JOptionPane.showMessageDialog(null, "The record is Duplicate");
@@ -93,7 +97,6 @@ public class SemesterPanel extends JSplitPane {
         });
     }
 
-    //check object
     private boolean controllAddObject(Semester value) {
         boolean input = false;
         for (Semester temp : semesters) {
