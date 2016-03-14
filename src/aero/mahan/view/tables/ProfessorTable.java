@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ProfessorTable extends JPanel {
 
-    ProfessorTableModel professorTableModel;
+    private ProfessorTableModel professorTableModel;
     private JTable professorTable;
 
     public ProfessorTable() {

@@ -16,11 +16,11 @@ import java.util.ArrayList;
  */
 public class SemesterPanel extends JSplitPane {
 
-    SemesterForm semesterForm;
-    SemesterTable semesterTable;
-    ArrayList<Semester> semesters;
+    private SemesterForm semesterForm;
+    private SemesterTable semesterTable;
+    private ArrayList<Semester> semesters;
     private ISemesterPanelToMainFrame iSemesterPanelToMainFrame;
-    int rowOfSelectedSemester;
+    private int rowOfSelectedSemester;
 
     public SemesterPanel() {
         super(VERTICAL_SPLIT);

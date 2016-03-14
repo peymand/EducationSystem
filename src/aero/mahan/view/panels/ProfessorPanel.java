@@ -11,8 +11,8 @@ import javax.swing.*;
 
     public class ProfessorPanel extends JSplitPane {
 
-        ProfessorForm professorForm;
-        ProfessorTable professorTable;
+        private ProfessorForm professorForm;
+        private ProfessorTable professorTable;
 
         public ProfessorPanel() {
             super(VERTICAL_SPLIT);
