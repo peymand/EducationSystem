@@ -20,7 +20,7 @@ public class LoginMainFrame extends JFrame {
         loginBLO = new LoginBLO();
 
         setTitle("Login Page");
-        setBounds(700, 500, 500, 200);
+        setBounds(700, 500, 390, 180);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
