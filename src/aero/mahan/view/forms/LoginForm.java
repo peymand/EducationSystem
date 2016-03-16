@@ -3,6 +3,7 @@ package aero.mahan.view.forms;
 import aero.mahan.view.interfaces.IloginNotifier;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,9 +78,24 @@ public class LoginForm extends JPanel {
         myButton.setVisible(true);
         myButton.setSize(25, 30);
         myButton.addActionListener(new ActionListener() {
+            Border border = BorderFactory.createLineBorder(Color.red, 1);
+            Border defultBorder = BorderFactory.createLineBorder(Color.black, 1);
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                iloginNotifier.loginEventOccurred(usernameTxt.getText(), passwordField.getText());
+                if(Validation.checkTextFieldIsEmpty(usernameTxt.getText())& Validation.checkTextFieldIsEmpty(passwordField.getText())){
+                    usernameTxt.setBorder(border);
+                    passwordField.setBorder(border);
+                    JOptionPane.showMessageDialog(null,"Please Enter Username/Password");
+                }else {
+                    usernameTxt.setBorder(defultBorder);
+                    passwordField.setBorder(defultBorder);
+                    iloginNotifier.loginEventOccurred(usernameTxt.getText(), passwordField.getText());
+                }
+                if(!iloginNotifier.loginEventOccurred(usernameTxt.getText(), passwordField.getText())){
+                    JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
+                }
+
             }
         });
         return myButton;

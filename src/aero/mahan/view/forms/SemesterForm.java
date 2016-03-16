@@ -21,7 +21,19 @@ import java.sql.SQLException;
 //test for git
 public class SemesterForm extends CustomJPanel {
 
-    private JLabel semesterYear, semesterNo,state1,state2;
+    private JLabel semesterYear;
+    private JLabel semesterNo;
+
+    public void setState2(ImageIcon imageIcon ) {
+        this.state2.setIcon(imageIcon);
+    }
+
+    public void setState1(ImageIcon imageIcon) {
+        this.state1.setIcon(imageIcon);
+    }
+
+    private JLabel state1;
+    private JLabel state2;
 
     private Semester currentSemester;
 
@@ -85,6 +97,12 @@ public class SemesterForm extends CustomJPanel {
     }
     public String getAcademicYearText() {
         return academicYearText.getText();
+    }
+    public JTextField getAcademicYearTextField() {
+        return academicYearText;
+    }
+    public JTextField getSemesterNoTextField() {
+        return semesterNoText;
     }
 
     public void setAcademicYearText(int text){
