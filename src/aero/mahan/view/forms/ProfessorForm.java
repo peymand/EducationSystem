@@ -1,7 +1,5 @@
 package aero.mahan.view.forms;
 
-import aero.mahan.view.interfaces.IprofessorNotifier;
-
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -12,56 +10,29 @@ import java.awt.*;
  */
 public class ProfessorForm extends JPanel {
 
-    private JLabel name, family,password,degree,professorNo;
-    private JTextField nameText, familyText, passwordText, degreeText, professorNoText;
+    private JLabel nameLbl, familyLbl, passwordLbl, degreeLbl, professorNoLbl;
+    private JTextField nameTxt, familyText, passwordText, degreeText, professorNoText;
     private JButton addBtn, saveBtn, deleteBtn, editBtn;
-    private IprofessorNotifier iprofessorNotifier;
-
-    public String getNameText() {
-        return nameText.getText();
-    }
-
-    public String getFamilyText() {
-        return familyText.getText();
-    }
-
-    public String getPasswordText() {
-        return passwordText.getText();
-    }
-
-    public String getDegreeText() {
-        return degreeText.getText();
-    }
-
-    public String getProfessorNoText() {
-        return professorNoText.getText();
-    }
-
-
-       public void setIProfessorNotifier(IprofessorNotifier x) {
-        this.iprofessorNotifier = x;
-    }
+    // private IprofessorNotifier iprofessorNotifier;
 
     public ProfessorForm() {
 
-        Dimension dim = new Dimension();
-        dim.height = 300;
-        dim.width = 900;
-        setPreferredSize(dim);
-        setMinimumSize(dim);
-        TitledBorder professorTitledBorder = new TitledBorder("Professor");
-        EtchedBorder innerBorder = new EtchedBorder(2);
-        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
+        setDimension();
+        setBorder();
         setLayout(new GridBagLayout());
+        createFields();
+        designComponentLayout();
+    }
 
-        name = new JLabel("    Name:");
-        family = new JLabel("    Family:");
-        password = new JLabel("    Password:");
-        degree = new JLabel("    Degree:");
-        professorNo = new JLabel("    Professor No:");
+    private void createFields() {
+        nameLbl = new JLabel("    Name:");
+        familyLbl = new JLabel("    Family:");
+        passwordLbl = new JLabel("    Password:");
+        degreeLbl = new JLabel("    Degree:");
+        professorNoLbl = new JLabel("    Professor No:");
 
 
-        nameText = new JTextField(10);
+        nameTxt = new JTextField(10);
         familyText = new JTextField(10);
         passwordText = new JTextField(10);
         degreeText = new JTextField(10);
@@ -80,9 +51,22 @@ public class ProfessorForm extends JPanel {
         editBtn = new JButton();
         ImageIcon editImg = new ImageIcon("resources\\icons\\pencil.png");
         editBtn.setIcon(editImg);
-
-        designComponentLayout();
     }
+
+    private void setBorder() {
+        TitledBorder professorTitledBorder = new TitledBorder("Professor");
+        EtchedBorder innerBorder = new EtchedBorder(2);
+        setBorder(BorderFactory.createCompoundBorder(professorTitledBorder, innerBorder));
+    }
+
+    private void setDimension() {
+        Dimension dim = new Dimension();
+        dim.height = 300;
+        dim.width = 900;
+        setPreferredSize(dim);
+        setMinimumSize(dim);
+    }
+
     private void designComponentLayout() {
         GridBagConstraints c = putProfessorOnForm();
 
@@ -98,28 +82,28 @@ public class ProfessorForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(name, c);
+        add(nameLbl, c);
 
         c.gridx = 3;
         c.gridy = 0;
-        add(family, c);
+        add(familyLbl, c);
 
         c.gridx = 0;
         c.gridy = 1;
-        add(password, c);
+        add(passwordLbl, c);
 
         c.gridx = 3;
         c.gridy = 1;
-        add(degree, c);
+        add(degreeLbl, c);
 
         c.gridx = 0;
         c.gridy = 2;
-        add(professorNo, c);
+        add(professorNoLbl, c);
         c.anchor = GridBagConstraints.CENTER;
 
         c.gridx = 1;
         c.gridy = 0;
-        add(nameText, c);
+        add(nameTxt, c);
 
         c.gridx = 4;
         c.gridy = 0;
@@ -139,7 +123,7 @@ public class ProfessorForm extends JPanel {
 
         c.gridx = 0;
         c.gridy = 3;
-        add(addBtn , c);
+        add(addBtn, c);
 
         c.gridx = 1;
         c.gridy = 3;
