@@ -5,6 +5,7 @@ import aero.mahan.view.forms.LoginForm;
 import aero.mahan.view.interfaces.IloginNotifier;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -29,6 +30,8 @@ public class LoginMainFrame extends JFrame {
         loginForm.setiLoginNotifer(new IloginNotifier() {
             @Override
             public void loginEventOccurred(String username, String password) {
+                Border redBorder = BorderFactory.createLineBorder(Color.red, 1);
+                Border defultBorder = BorderFactory.createLineBorder(Color.black, 1);
                 try {
                     if (loginBLO.checkUser(username, password) == 1) {
                         dispose();
@@ -37,7 +40,11 @@ public class LoginMainFrame extends JFrame {
                     } else
                         JOptionPane.showMessageDialog(null, "Frame has not implemented");
                 } catch (SQLException e) {
+                    loginForm.getUsernameTxt().setBorder(redBorder);
+                    loginForm.getPasswordField().setBorder(redBorder);
                     JOptionPane.showMessageDialog(null, e.getMessage());
+
+
                 }
             }
         });

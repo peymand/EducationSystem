@@ -11,6 +11,23 @@ import java.awt.event.ActionListener;
 public class LoginForm extends JPanel {
 
     private JLabel usernameLbl,passwordLbl;
+
+    public void setUsernameTxt(JTextField usernameTxt) {
+        this.usernameTxt = usernameTxt;
+    }
+
+    public void setPasswordField(JPasswordField passwordField) {
+        this.passwordField = passwordField;
+    }
+
+    public JTextField getUsernameTxt() {
+        return usernameTxt;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
     private JTextField usernameTxt;
     private JPasswordField passwordField;
     private GridBagConstraints layout;
@@ -80,23 +97,21 @@ public class LoginForm extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Validation.checkTextFieldIsEmpty(usernameTxt.getText())& Validation.checkTextFieldIsEmpty(passwordField.getText())){
+                if (Validation.checkTextFieldIsEmpty(usernameTxt.getText()) & Validation.checkTextFieldIsEmpty(passwordField.getText())) {
                     usernameTxt.setBorder(border);
                     passwordField.setBorder(border);
-                    JOptionPane.showMessageDialog(null,"Please Enter Username/Password");
-                }else {
+                    JOptionPane.showMessageDialog(null, "Please Enter Username/Password");
+                } else {
                     usernameTxt.setBorder(defultBorder);
                     passwordField.setBorder(defultBorder);
                     iloginNotifier.loginEventOccurred(usernameTxt.getText(), passwordField.getText());
                 }
-                if(!iloginNotifier.loginEventOccurred(usernameTxt.getText(), passwordField.getText())){
-                    JOptionPane.showMessageDialog(null, "Invalid User Name/Password");
-                }
-
             }
         });
         return myButton;
     }
 }
+
+
 
 
