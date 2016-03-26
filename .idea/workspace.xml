@@ -2,61 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="209e074f-50ec-4f84-8fc7-6a6bf114b6da" name="Default" comment="shabnam &amp; maryam implement loginform validation">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Admin.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/controller/AdminMainFrame$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/controller/AdminMainFrame.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/utility/AppStart$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/utility/AppStart.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Course.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/custompanel/CrudPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/custompanel/CustomJPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/data/DbUtil.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/IGeneralNotifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/IProfessorTableNotifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/ISemesterPanelToMainFrame.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/IloginNotifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/IprofessorNotifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/IsemesterNotifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/interfaces/IsemesterTableNotifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/biz/BLO/LoginBLO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/data/DAO/LoginDAO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/forms/LoginForm$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/forms/LoginForm$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/forms/LoginForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/controller/LoginMainFrame$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/controller/LoginMainFrame.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Major.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Person.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Professor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/forms/ProfessorForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/panels/ProfessorPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/tables/ProfessorTable$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/tables/ProfessorTable.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/tables/models/ProfessorTableModel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Role.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Semester.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/biz/BLO/SemesterBLO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/data/DAO/SemesterDAO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/forms/SemesterForm.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/panels/SemesterPanel$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/panels/SemesterPanel$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/panels/SemesterPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/tables/SemesterTable$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/tables/SemesterTable.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/tables/models/SemesterTableModel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/model/Student.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/controller/StudentMainFrame.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/controller/TeacherMainFrame.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/EducationSystem/aero/mahan/view/forms/Validation.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EducationSystem.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\biz\BLO\LoginBLO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\biz\BLO\SemesterBLO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\controller\AdminMainFrame$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\controller\AdminMainFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\controller\LoginMainFrame$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\controller\LoginMainFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\controller\StudentMainFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\controller\TeacherMainFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\data\DAO\LoginDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\data\DAO\SemesterDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\data\DbUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Admin.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Course.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Major.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Person.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Professor.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Role.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Semester.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\model\Student.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\utility\AppStart$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\utility\AppStart.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\custompanel\CrudPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\custompanel\CustomJPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\forms\LoginForm$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\forms\LoginForm$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\forms\LoginForm.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\forms\ProfessorForm.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\forms\SemesterForm.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\forms\Validation.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\IGeneralNotifier.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\IProfessorTableNotifier.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\ISemesterPanelToMainFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\IloginNotifier.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\IprofessorNotifier.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\IsemesterNotifier.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\interfaces\IsemesterTableNotifier.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\panels\ProfessorPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\panels\SemesterPanel$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\panels\SemesterPanel$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\panels\SemesterPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\tables\ProfessorTable$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\tables\ProfessorTable.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\tables\SemesterTable$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\tables\SemesterTable.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\tables\models\ProfessorTableModel.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\9316173\Work Folders\git\EducationSystem\out\production\EducationSystem\aero\mahan\view\tables\models\SemesterTableModel.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EducationSystem.iml" afterPath="$PROJECT_DIR$/EducationSystem.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aero/mahan/controller/LoginMainFrame.java" afterPath="$PROJECT_DIR$/src/aero/mahan/controller/LoginMainFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="6da7b2ab-8c12-439f-ba9b-8e525b856c9a" name="New changelist" comment="" />
     <ignored path="EducationSystem.iws" />
@@ -83,11 +77,11 @@
       <file leaf-file-name="LoginMainFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/aero/mahan/controller/LoginMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8257143">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.85">
+              <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
               <folding>
-                <element signature="e#722#1384#0" expanded="true" />
-                <element signature="e#1383#1384#0" expanded="true" />
+                <element signature="e#722#1456#0" expanded="true" />
+                <element signature="e#1455#1456#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -299,7 +293,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../sqljdbc4-3.0.jar!/" />
@@ -750,7 +744,7 @@
       <workItem from="1457149039563" duration="1016000" />
       <workItem from="1457152049860" duration="12650000" />
       <workItem from="1457415983982" duration="25778000" />
-      <workItem from="1458013223260" duration="8057000" />
+      <workItem from="1458013223260" duration="9502000" />
     </task>
     <task id="LOCAL-00001" summary="Maryam &amp; Airin Validation on SemesterForm">
       <created>1457416055984</created>
@@ -792,7 +786,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50366000" />
+    <option name="totallyTimeSpent" value="51811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
@@ -874,8 +868,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
           <folding>
-            <element signature="e#722#1384#0" expanded="true" />
-            <element signature="e#1383#1384#0" expanded="true" />
+            <element signature="e#722#1456#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1205,11 +1199,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/aero/mahan/controller/LoginMainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8257143">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.85">
+          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
           <folding>
-            <element signature="e#722#1384#0" expanded="true" />
-            <element signature="e#1383#1384#0" expanded="true" />
+            <element signature="e#722#1456#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1271,7 +1265,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
