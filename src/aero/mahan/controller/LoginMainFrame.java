@@ -39,7 +39,6 @@ public class LoginMainFrame extends JFrame {
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                     JOptionPane.showMessageDialog(null,e.getMessage());
-                    JOptionPane.showMessageDialog(null,e.getMessage());
                 }
             }
         });
