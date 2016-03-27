@@ -38,8 +38,8 @@ public class LoginMainFrame extends JFrame {
                         JOptionPane.showMessageDialog(null, "Frame has not implemented");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
-                    JOptionPane.showMessageDialog(null,e.getMessage());
-                    JOptionPane.showMessageDialog(null,e.getMessage());
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    // morti
                 }
             }
         });
